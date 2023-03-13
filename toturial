@@ -1,12 +1,4 @@
 REACT BASIC TOTURIAL
 
-1.1 JSX rules
-	- Return single element
-	- div/section/article or Fragment
-	- use camelCase for html attribute
-	- className instead of class
-	- close every element
-	- formatting
-1.2 Component in detail
-	- stateless functional component
-	- always return JSX
+1.1 JSX rules - Return single element - div/section/article or Fragment - use camelCase for html attribute - className instead of class - close every element - formatting
+1.2 Component in detail - stateless functional component - always return JSX
