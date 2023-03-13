@@ -1,0 +1,18 @@
+.experience-detail {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-column-gap: 2rem;
+  column-gap: 2rem;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.experience-detail span {
+  color: #2caeba;
+}
+
+.experience-detail p {
+  color: #324d67;
+  line-height: 24px;
+}

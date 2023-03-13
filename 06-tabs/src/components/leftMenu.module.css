@@ -1,0 +1,32 @@
+.left-menu {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  border: none;
+  color: #181819;
+  font-size: 1.25rem;
+  background-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  margin: 0.4rem 0;
+  cursor: pointer;
+}
+
+.button:link,
+.button:visited {
+}
+
+.button:hover,
+.button:hover:active {
+  border-left: 3px solid #2caeba;
+  color: #2caeba;
+}
+
+.active {
+  border-left: 3px solid #2caeba !important;
+  color: #2caeba !important;
+}
