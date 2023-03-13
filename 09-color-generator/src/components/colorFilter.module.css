@@ -1,0 +1,50 @@
+.container {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+}
+
+.container h3 {
+  margin-right: 2rem;
+  font-size: 28px;
+  letter-spacing: 1.6px;
+  line-height: 28px;
+  color: #102a42;
+}
+
+.container form input {
+  border-color: transparent;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  font-size: 19.2px;
+  line-height: normal;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+}
+
+input.error {
+  border: 2px solid #bb2525;
+}
+
+.btn {
+  background: #49a6e9;
+  border-color: transparent;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  text-transform: capitalize;
+  color: #fff;
+  cursor: pointer;
+  font-size: 19.2px;
+  line-height: normal;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+}
+
+.btn:visited,
+.btn:link {
+}
+
+.btn:hover,
+.btn:active {
+}
