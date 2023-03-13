@@ -1,0 +1,10 @@
+.App {
+  width: 100%;
+  height: auto;
+}
+
+.Loading {
+  text-align: center;
+  margin-top: 10rem;
+  font-size: 48px;
+}
