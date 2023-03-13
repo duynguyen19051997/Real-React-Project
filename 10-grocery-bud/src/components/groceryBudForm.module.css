@@ -1,0 +1,55 @@
+.grocery_form {
+  width: 95%;
+  height: 100%;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.grocery_form h1 {
+  text-align: center;
+  text-transform: capitalize;
+  padding: 1.5rem 0;
+  color: #063251;
+}
+
+.grocery_form form {
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 80% 20%;
+}
+
+.grocery_form_input {
+  border: none;
+  background-color: #f1f5f8;
+  color: #a4b5c5;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.grocery_form_input:focus {
+  border-right: none;
+}
+
+.grocery_form_submit {
+  border: none;
+  background-color: #a5d5f8;
+  color: #000000;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.grocery_form_submit:link,
+.grocery_form_submit:visited {
+}
+
+.grocery_form_submit:hover,
+.grocery_form_submit:active {
+  background-color: #49a6e9;
+  color: #ffffff;
+}

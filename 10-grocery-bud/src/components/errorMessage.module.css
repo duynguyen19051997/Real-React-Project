@@ -1,0 +1,31 @@
+.error_fail {
+  width: 76%;
+  height: 100%;
+  margin: 0 auto;
+  background-color: #f8d7da;
+  border-radius: 3px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.error_fail h4 {
+  color: #83353c;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.error_success {
+  width: 76%;
+  height: 100%;
+  margin: 0 auto;
+  background-color: #d4edda;
+  border-radius: 3px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.error_success h4 {
+  color: #236232;
+  text-align: center;
+  letter-spacing: 2px;
+}
