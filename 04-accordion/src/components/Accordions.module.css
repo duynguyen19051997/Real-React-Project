@@ -1,0 +1,30 @@
+.container {
+  width: 60%;
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  background-color: #ffff;
+  border-radius: 0.5rem;
+}
+
+.accordions {
+  width: 90%;
+  margin: 15px auto;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.title {
+  width: 40%;
+  margin-top: 10px;
+  text-transform: capitalize;
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: 1.6px;
+  line-height: 33.6px;
+}
+
+.questions {
+  width: 60%;
+}
