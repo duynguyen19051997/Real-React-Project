@@ -1,0 +1,122 @@
+.cocktail_item {
+  width: 17vw;
+  margin: 0 auto;
+  background: #fff;
+  margin-bottom: 2rem;
+  box-shadow: 2px 5px 3px 0 rgba(0, 0, 0, 0.5);
+  transition: all 0.3s linear;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  border-radius: 0.25rem;
+}
+
+.cocktail_item:hover {
+  box-shadow: 4px 10px 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+.image_area {
+  height: 20rem;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.image_area img {
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s linear;
+}
+
+.image_area img:hover {
+  transform: scale(1.1);
+}
+
+.content_area {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.name {
+  text-align: left;
+  font-size: 2rem;
+  letter-spacing: 4.8px;
+  color: #222222;
+  word-break: break-word;
+}
+
+.glass {
+  text-align: left;
+  margin-bottom: 0.3rem;
+  letter-spacing: 3.8px;
+  color: #222222;
+  word-break: break-word;
+}
+
+.info {
+  color: #c1c1c1;
+  margin-bottom: 0.5rem;
+  text-align: left;
+  display: block;
+  letter-spacing: 2.8px;
+  word-break: break-word;
+}
+
+.btn_details {
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding: 0.25rem 0.4rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  letter-spacing: 3px;
+  background-color: #476a2e;
+  color: #d4dcce;
+  border-color: transparent;
+  border-radius: 0.25rem;
+  display: inline-block;
+  transition: all 0.5s linear;
+  text-decoration: none;
+}
+
+.btn_details:link,
+.btn_details:visited {
+  color: #d4dcce;
+}
+
+.btn_details:hover,
+.btn_details:active {
+  background-color: #d4e6a5;
+  color: #658548;
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 1024px) {
+  .cocktail_item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .image_area {
+    width: 58%;
+  }
+  .content_area {
+    width: 40%;
+  }
+  .name {
+    font-size: 1.2rem;
+    letter-spacing: 3.8px;
+  }
+
+  .glass {
+    margin-bottom: 0.3rem;
+    letter-spacing: 2.8px;
+  }
+
+  .info {
+    margin-bottom: 0.5rem;
+    letter-spacing: 1.8px;
+  }
+  .btn_details {
+    padding: 0.2rem 0.25rem;
+  }
+}

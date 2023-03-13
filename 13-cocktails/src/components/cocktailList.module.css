@@ -1,0 +1,52 @@
+.cocktail_list_area {
+  width: 60%;
+  margin: 3rem auto;
+}
+
+.cocktail_list_area h2 {
+  text-align: center;
+  text-transform: capitalize;
+  margin-bottom: 3rem;
+  font-size: 3rem;
+  letter-spacing: 0.5rem;
+  color: #222222;
+}
+
+.not_found {
+  width: 100%;
+}
+
+.not_found h3 {
+  text-align: center;
+  text-transform: capitalize;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  letter-spacing: 3px;
+  color: #222222;
+}
+
+.cocktail_center {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-row-gap: 2rem;
+  grid-column-gap: 2rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .cocktail_center {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .cocktail_center {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+}

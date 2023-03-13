@@ -1,0 +1,23 @@
+.about_area {
+  width: 60%;
+  height: auto;
+  margin: 5rem auto;
+}
+
+.about_area h2 {
+  text-align: center;
+  text-transform: capitalize;
+  margin-bottom: 3rem;
+  font-size: 3rem;
+  letter-spacing: 0.5rem;
+  color: #222222;
+}
+
+.about_area p {
+  line-height: 1.8;
+  letter-spacing: 2px;
+  margin-left: 10px;
+  text-align: left;
+  color: #282828;
+  padding: 0 2rem;
+}
