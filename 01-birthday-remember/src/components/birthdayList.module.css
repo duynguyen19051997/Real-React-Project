@@ -1,0 +1,37 @@
+.BirthdayList {
+  width: 25%;
+  height: auto;
+  margin: auto auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 30px 30px 18px #d65989;
+  position: relative;
+  top: 10vh;
+}
+
+.BirthdayList h2 {
+  padding-top: 10px;
+}
+
+.button {
+  width: 30%;
+  height: 5vh;
+  border-radius: 15px;
+  margin: 10px auto;
+  background-color: #f28ab2;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.button:visited,
+.button:link {
+}
+
+.button:hover,
+.button:active {
+  background-color: #d65989;
+}
