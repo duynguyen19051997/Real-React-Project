@@ -1,0 +1,125 @@
+.review {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px 0px;
+  background-color: #fff;
+}
+
+.image {
+  width: 35%;
+  height: 35%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+  top: 1%;
+  left: 15px;
+  background-color: #6ebef7;
+}
+
+.image .img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  top: 1%;
+  z-index: 2;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  background-color: #6ebef7;
+  border-radius: 50%;
+  position: absolute;
+  top: 4%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.icon img {
+  width: 20px;
+  margin: 0 auto;
+}
+
+.content {
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.content .name {
+  margin-bottom: 0.25rem;
+  letter-spacing: 1.6px;
+  text-transform: capitalize;
+}
+
+.content .description {
+  text-transform: uppercase;
+  color: rgb(73, 166, 233);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.content .detail {
+  box-sizing: border-box;
+  color: rgb(97, 125, 152);
+  line-height: 24px;
+}
+
+.action {
+  text-align: center;
+  margin: 0.5rem auto;
+}
+
+.action .next {
+  margin-left: 0.4rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.action .previous {
+  margin-right: 0.4rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.surprise-me {
+  width: 30%;
+  margin-bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button {
+  border: none;
+  padding: 5px;
+  transition: all 0.5s ease-in-out;
+  background-color: #ebf7ff;
+  color: #a5d5f8;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:visited,
+button:active {
+}
+
+button:hover,
+button:active {
+  background-color: #a5d5f8;
+  color: #243a52;
+}
+
+/* TODO: responsive */
