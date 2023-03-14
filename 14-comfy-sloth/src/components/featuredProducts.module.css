@@ -1,0 +1,24 @@
+.featured_products_container {
+  width: 100%;
+  min-height: 40vh;
+  height: auto;
+  background-color: #f1f5f8;
+}
+
+.featured_products_container h2 {
+  text-align: center;
+  padding-top: 2rem;
+  font-size: 2.5rem;
+  letter-spacing: 0.25rem;
+  text-transform: capitalize;
+}
+
+.line {
+  width: 7%;
+  height: 0.25rem;
+  margin: 0 auto;
+  background-color: #ab7a5f;
+}
+
+.featured_products_list {
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import { BsFillCartFill, BsFillPersonPlusFill } from "react-icons/bs";
-import comfy_sloth from "../comfy_sloth.svg";
+import comfy_sloth from "../images/comfy_sloth.svg";
 import classes from "./header.module.css";
 
 export const Header = (props) => {
