@@ -94,6 +94,12 @@
   border-radius: 0.25rem;
 }
 
+@media screen and (width < 1500px) {
+  .main_home_container {
+    width: 75%;
+  }
+}
+
 @media screen and (width < 1440px) {
   .main_home_container {
     width: 70%;
