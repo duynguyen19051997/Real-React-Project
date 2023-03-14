@@ -23,3 +23,19 @@
 .featured_products_list {
   text-align: center;
 }
+
+.btn_all_products {
+  background: #ab7a5f;
+  color: #eaded7;
+}
+
+.btn_all_products:link,
+.btn_all_products:visited {
+  color: #eaded7;
+}
+
+.btn_all_products:hover,
+.btn_all_products:active {
+  background: #c5a491;
+  color: #453227;
+}

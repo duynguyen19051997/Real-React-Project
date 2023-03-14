@@ -7,3 +7,28 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.btn {
+  border-color: transparent;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  transition: all 0.3s linear;
+  text-decoration: none;
+}
+
+.btn:link,
+.btn:visited {
+  border-color: transparent;
+}
+
+.btn:hover,
+.btn:active {
+  transform: scale(1.1);
+}

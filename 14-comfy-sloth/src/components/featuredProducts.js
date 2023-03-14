@@ -9,6 +9,9 @@ export const FeaturedProducts = (props) => {
       <hr className={classes["line"]} />
       <div className={classes["featured_products_list"]}>
         <h4>Featured Product Items</h4>
+        <button className={`btn ${classes["btn_all_products"]}`}>
+          all products
+        </button>
       </div>
     </section>
   );

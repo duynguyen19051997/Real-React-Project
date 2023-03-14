@@ -15,7 +15,7 @@ export const MainHome = (props) => {
           aperiam odio ducimus, obcaecati libero et quia tempora excepturi quis
           alias?
         </p>
-        <button className={classes["btn_main_home"]}>shop now</button>
+        <button className={`btn ${classes["btn_main_home"]}`}>shop now</button>
       </article>
       <article className={classes["image_container"]}>
         <img
