@@ -31,19 +31,7 @@
 
 .btn_main_home {
   background: #ab7a5f;
-  border-color: transparent;
-  border-radius: 0.25rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   color: #eaded7;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 0.875rem;
-  font-weight: 400;
-  letter-spacing: 0.1rem;
-  padding: 0.5rem 1rem;
-  text-transform: uppercase;
-  transition: all 0.3s linear;
-  text-decoration: none;
 }
 
 .btn_main_home:link,
@@ -53,7 +41,6 @@
 
 .btn_main_home:hover,
 .btn_main_home:active {
-  transform: scale(1.1);
   background: #c5a491;
   color: #453227;
 }
