@@ -1,4 +1,5 @@
 import React from "react";
+import { ServiceItem } from "./serviceItem";
 
 import classes from "./services.module.css";
 
@@ -15,7 +16,9 @@ export const Services = (props) => {
           </p>
         </div>
         <div className={classes["service_list"]}>
-          <h4>List services</h4>
+          <ServiceItem />
+          <ServiceItem />
+          <ServiceItem />
         </div>
         <div className={classes["contact_container"]}>
           <h2>Join our newsletter and get 20% off</h2>

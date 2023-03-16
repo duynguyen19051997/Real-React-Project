@@ -39,8 +39,11 @@
 }
 
 .service_list {
-  width: 60%;
+  width: 100%;
   margin: 2rem auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 1rem;
 }
 
 .contact_container {
@@ -51,6 +54,7 @@
 .info_contact {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin-bottom: 3rem;
 }
 
 .info_contact p {
@@ -69,6 +73,7 @@
   width: 80%;
   display: grid;
   grid-template-columns: 1fr auto;
+  margin: 0 auto;
 }
 
 .form_input {
@@ -102,4 +107,11 @@
 .btn_contact:hover,
 .btn_contact:active {
   color: #ffff;
+}
+
+@media screen and (width < 1024px) {
+  .info_contact {
+    display: flex;
+    flex-direction: column;
+  }
 }
