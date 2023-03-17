@@ -21,10 +21,10 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  padding-top: 3rem;
 }
 
-.title h2,
-.letter h2 {
+.title h2 {
   color: #453227;
   font-size: 32px;
   letter-spacing: 1.8px;

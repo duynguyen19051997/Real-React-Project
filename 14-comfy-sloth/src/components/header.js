@@ -23,11 +23,11 @@ export const Header = (props) => {
           </Link>
         </div>
         <div className={classes["action"]}>
-          <button className={classes["btn_action"]}>
+          <Link to={"/cart"} className={classes["btn_action"]}>
             Cart
             <BsFillCartFill className={classes["icon"]} />
             <span className={classes["cart_value"]}>100</span>
-          </button>
+          </Link>
           <button className={classes["btn_action"]}>
             Login
             <BsFillPersonPlusFill className={classes["icon"]} />
