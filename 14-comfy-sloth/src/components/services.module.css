@@ -109,8 +109,19 @@
   color: #ffff;
 }
 
+@media screen and (width < 1440px) {
+  .services_center {
+    width: 90%;
+  }
+}
+
 @media screen and (width < 1024px) {
-  .info_contact {
+  .services_center {
+    width: 50%;
+  }
+  .info_contact,
+  .service_list,
+  .title {
     display: flex;
     flex-direction: column;
   }
