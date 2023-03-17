@@ -4,13 +4,15 @@ import { Footer } from "./components/footer";
 import { Header } from "./components/header";
 import { Home } from "./pages/home";
 import "./App.css";
+import { Products } from "./pages/products";
 
 function App() {
   return (
     <div className="App">
       <Header />
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route exact path="/products" element={<Products />} />
       </Routes>
       <Footer />
     </div>
