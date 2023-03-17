@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import main_home_1 from "../images/main_home_1.jpeg";
 import main_home_2 from "../images/main_home_2.jpeg";
@@ -15,7 +16,9 @@ export const MainHome = (props) => {
           aperiam odio ducimus, obcaecati libero et quia tempora excepturi quis
           alias?
         </p>
-        <button className={`btn ${classes["btn_main_home"]}`}>shop now</button>
+        <Link to={"/products"} className={`btn ${classes["btn_main_home"]}`}>
+          shop now
+        </Link>
       </article>
       <article className={classes["image_container"]}>
         <img

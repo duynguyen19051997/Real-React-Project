@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { BsFillCartFill, BsFillPersonPlusFill } from "react-icons/bs";
 import comfy_sloth from "../images/comfy_sloth.svg";
 import classes from "./header.module.css";
@@ -11,9 +12,15 @@ export const Header = (props) => {
           <img src={comfy_sloth} alt="" />
         </div>
         <div className={classes["page"]}>
-          <button className={classes["btn_page"]}>Home</button>
-          <button className={classes["btn_page"]}>Product</button>
-          <button className={classes["btn_page"]}>About</button>
+          <Link to={"/"} className={classes["btn_page"]}>
+            Home
+          </Link>
+          <Link to={"/products"} className={classes["btn_page"]}>
+            Product
+          </Link>
+          <Link to={"/about"} className={classes["btn_page"]}>
+            About
+          </Link>
         </div>
         <div className={classes["action"]}>
           <button className={classes["btn_action"]}>

@@ -1,17 +1,17 @@
-import "./App.css";
-import { FeaturedProducts } from "./components/featuredProducts";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
 import { Footer } from "./components/footer";
 import { Header } from "./components/header";
-import { MainHome } from "./components/mainHome";
-import { Services } from "./components/services";
+import { Home } from "./pages/home";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <MainHome />
-      <FeaturedProducts />
-      <Services />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+      </Routes>
       <Footer />
     </div>
   );
