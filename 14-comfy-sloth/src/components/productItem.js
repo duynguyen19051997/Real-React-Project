@@ -2,9 +2,9 @@ import React from "react";
 
 import { BsSearch } from "react-icons/bs";
 
-import classes from "./featuredProductItem.module.css";
+import classes from "./productItem.module.css";
 
-export const FeaturedProductItem = (props) => {
+export const ProductItem = (props) => {
   return (
     <article className={classes["featured_product_item_container"]}>
       <div className={classes["img_container"]}>

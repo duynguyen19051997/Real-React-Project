@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FeaturedProductItem } from "./featuredProductItem";
+import { ProductItem } from "./productItem";
 
 import classes from "./featuredProducts.module.css";
 
@@ -11,9 +11,9 @@ export const FeaturedProducts = (props) => {
       <hr className={classes["line"]} />
       <div className={classes["featured_products_list"]}>
         <div className={classes["featured_products_center"]}>
-          <FeaturedProductItem />
-          <FeaturedProductItem />
-          <FeaturedProductItem />
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
         </div>
         <Link to={"/products"} className={`btn ${classes["btn_all_products"]}`}>
           all products

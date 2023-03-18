@@ -1,13 +1,15 @@
 .products_filter_container {
-  width: 30%;
+  width: 100%;
   margin: 0 auto;
   margin-bottom: 3rem;
 }
 
 .filter_form {
-  width: 25%;
+  width: 90%;
   display: flex;
   flex-direction: column;
+  position: sticky;
+  top: 1rem;
 }
 
 .form_control {
@@ -57,6 +59,7 @@
   border-color: transparent;
   padding: 0.25rem;
   margin-top: 0.5rem;
+  letter-spacing: 1.8px;
 }
 
 .btn_filter {
@@ -71,6 +74,7 @@
 
 .btn_filter:link,
 .btn_filter:visited {
+  color: #617d98;
 }
 
 .btn_filter:hover,
