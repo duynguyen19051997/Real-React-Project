@@ -1,6 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaMinus, FaPlus } from "react-icons/fa";
+import {
+  FaMinus,
+  FaPlus,
+  FaRegStar,
+  FaStar,
+  FaStarHalfAlt,
+} from "react-icons/fa";
 
 import classes from "./productDetail.module.css";
 
@@ -25,7 +31,14 @@ export const ProductDetail = (props) => {
       </div>
       <div className={classes["content_container"]}>
         <h2>modern poster</h2>
-        <p>Number of star</p>
+        <div className={classes["feed_back"]}>
+          <FaStar className={classes["start_icon"]} />
+          <FaStar className={classes["start_icon"]} />
+          <FaStarHalfAlt className={classes["start_icon"]} />
+          <FaRegStar className={classes["start_icon"]} />
+          <FaRegStar className={classes["start_icon"]} />
+          <p>(100 customer reviews)</p>
+        </div>
         <h4>$30.99</h4>
         <p>
           Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore

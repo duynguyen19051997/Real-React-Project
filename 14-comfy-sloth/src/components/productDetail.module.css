@@ -59,6 +59,22 @@
   display: contents;
 }
 
+.feed_back {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.start_icon {
+  color: #ffb900;
+  font-size: 1.25rem;
+  margin-right: 0.35rem;
+}
+
+.feed_back p {
+  margin-left: 0.5rem;
+}
+
 .content_container h4 {
   color: #ab7a5f;
   font-size: 1.25rem;
