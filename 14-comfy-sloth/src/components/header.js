@@ -15,7 +15,7 @@ export const Header = (props) => {
           <Link to={"/"} className={classes["btn_page"]}>
             Home
           </Link>
-          <Link to={"/products"} className={classes["btn_page"]}>
+          <Link to={"/products"} className={`${classes["btn_page"]}`}>
             Product
           </Link>
           <Link to={"/about"} className={classes["btn_page"]}>
@@ -23,7 +23,7 @@ export const Header = (props) => {
           </Link>
         </div>
         <div className={classes["action"]}>
-          <Link to={"/cart"} className={classes["btn_action"]}>
+          <Link to={"/cart"} className={`${classes["btn_action"]}`}>
             Cart
             <BsFillCartFill className={classes["icon"]} />
             <span className={classes["cart_value"]}>100</span>
