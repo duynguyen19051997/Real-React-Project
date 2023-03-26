@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaMinus, FaPlus, FaTrashAlt } from "react-icons/fa";
 import { BsFillCircleFill } from "react-icons/bs";
 
@@ -99,9 +100,9 @@ export const Cart = (props) => {
       </article>
       <hr className={classes["line"]} />
       <div className={classes["shopping_action"]}>
-        <button className={`btn ${classes["continue_btn"]}`}>
+        <Link to={"/products"} className={`btn ${classes["continue_btn"]}`}>
           Continue Shopping
-        </button>
+        </Link>
         <button className={`btn ${classes["clear_btn"]}`}>
           Clear Shopping Cart
         </button>
