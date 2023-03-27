@@ -3,7 +3,7 @@ import { MainHome } from "../components/mainHome";
 import { FeaturedProducts } from "../components/featuredProducts";
 import { Services } from "../components/services";
 
-export const Home = () => {
+export const HomePage = () => {
   return (
     <main>
       <MainHome />
