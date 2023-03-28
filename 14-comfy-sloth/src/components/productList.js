@@ -1,9 +1,15 @@
 import React from "react";
 import { BsListUl } from "react-icons/bs";
+import { useProductsContext } from "../contexts/productContext";
+import { Loading } from "./loading";
 import { ProductItem } from "./productItem";
 import classes from "./productList.module.css";
 
 export const ProductList = (props) => {
+  const { isProductLoading, products, isProductError } = useProductsContext();
+
+  //TODO Check Error
+
   return (
     <section className={classes["products_container"]}>
       <div className={classes["arrange_container"]}>
@@ -22,26 +28,14 @@ export const ProductList = (props) => {
           <option>Name (z-a)</option>
         </select>
       </div>
-      <div className={classes["items_container"]}>
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-      </div>
+      {isProductLoading && <Loading />}
+      {!isProductLoading && !isProductError && (
+        <div className={classes["items_container"]}>
+          {products.map((x) => (
+            <ProductItem key={x.id} {...x} />
+          ))}
+        </div>
+      )}
     </section>
   );
 };

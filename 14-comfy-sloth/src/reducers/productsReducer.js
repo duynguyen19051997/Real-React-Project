@@ -1,6 +1,8 @@
 import {
+  GET_FEATURED_PRODUCTS,
   GET_PRODUCTS,
   GET_SINGLE_PRODUCT,
+  IS_LOADING_PRODUCTS_ERROR,
   LOADING_PRODUCTS_BEGIN,
   LOADING_PRODUCTS_END,
 } from "../actions/productActions";
@@ -12,9 +14,22 @@ export const productsReducer = (state, action) => {
     case LOADING_PRODUCTS_END:
       return { ...state, isProductLoading: false };
     case GET_PRODUCTS:
-      break;
+      return { ...state, products: action.payload.products };
+    case GET_FEATURED_PRODUCTS:
+      return {
+        ...state,
+        featured_products: action.payload.products.filter(
+          (x) => x.featured === true
+        ),
+      };
     case GET_SINGLE_PRODUCT:
       break;
+    case IS_LOADING_PRODUCTS_ERROR:
+      return {
+        ...state,
+        isProductError: true,
+        productErrorMessage: action.payload.error,
+      };
 
     default:
       return state;

@@ -23,8 +23,16 @@ export const Services = (props) => {
           <div className={classes["info_contact"]}>
             <p>{details}</p>
             <div className={classes["contact"]}>
-              <form className={classes["contact_form"]}>
-                <input className={classes["form_input"]} name="mail" />
+              <form
+                className={classes["contact_form"]}
+                action="https://formspree.io/f/xwkjreyj"
+                method="POST"
+              >
+                <input
+                  className={classes["form_input"]}
+                  name="email"
+                  type="email"
+                />
                 <button type="submit" className={classes["btn_contact"]}>
                   Subscribe
                 </button>

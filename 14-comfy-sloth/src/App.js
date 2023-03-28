@@ -8,6 +8,7 @@ import {
   ProductDetailPage,
   CartPage,
   AboutPage,
+  ErrorPage,
 } from "./pages/index";
 
 import "./App.css";
@@ -22,7 +23,7 @@ function App() {
         <Route path="/products/:productId" element={<ProductDetailPage />} />
         <Route exact path="/cart" element={<CartPage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="*" element={<HomePage />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />
     </div>

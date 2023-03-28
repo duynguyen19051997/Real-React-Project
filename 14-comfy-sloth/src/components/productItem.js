@@ -6,13 +6,15 @@ import { Link } from "react-router-dom";
 import classes from "./productItem.module.css";
 
 export const ProductItem = (props) => {
+  const { id, name, price, image } = props;
+
   return (
     <article className={classes["featured_product_item_container"]}>
       <div className={classes["img_container"]}>
-        <img src="https://images2.imgbox.com/cb/69/cQ29pV1x_o.jpeg" alt="" />
+        <img src={image} alt={name} />
         <div className={classes["overlay"]}>
           <Link
-            to="/products/1"
+            to={`/products/${id}`}
             className={`btn ${classes["btn_icon_search"]}`}
           >
             <BsSearch className={classes["search_icon"]} />
@@ -20,8 +22,8 @@ export const ProductItem = (props) => {
         </div>
       </div>
       <div className={classes["content_container"]}>
-        <h5>entertainment center</h5>
-        <p>$599.99</p>
+        <h5>{name}</h5>
+        <p>${price}</p>
       </div>
     </article>
   );
