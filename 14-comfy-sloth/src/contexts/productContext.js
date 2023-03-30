@@ -9,7 +9,7 @@ import {
   LOADING_PRODUCTS_END,
 } from "../actions/productActions";
 import { productsReducer } from "../reducers/productsReducer";
-import { products_url } from "../utils/constants";
+import { products_url, single_product_url } from "../utils/constants";
 
 const productsInitial = {
   isProductLoading: false,
@@ -49,9 +49,24 @@ export const ProductsProvider = (props) => {
     dispatch({ type: LOADING_PRODUCTS_END });
   };
 
-  const getSingleProduct = (productId) => {
+  const getSingleProduct = async (productId) => {
     dispatch({ type: LOADING_PRODUCTS_BEGIN });
-    dispatch({ type: GET_SINGLE_PRODUCT, payload: { productId } });
+    await axios
+      .get(single_product_url)
+      .then((response) => {
+        if (response.data && response.data.length > 0) {
+          dispatch({
+            type: GET_SINGLE_PRODUCT,
+            payload: { products: response.data },
+          });
+        }
+      })
+      .catch((error) => {
+        dispatch({
+          type: IS_LOADING_PRODUCTS_ERROR,
+          payload: { error: error.message },
+        });
+      });
     dispatch({ type: LOADING_PRODUCTS_END });
   };
 

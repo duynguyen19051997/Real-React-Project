@@ -7,8 +7,8 @@ export const Error = (props) => {
   return (
     <section className={classes["error_container"]}>
       <div className={classes["error_center"]}>
-        <h1>404</h1>
-        <p>Sorry, the page you tried cannot be found</p>
+        <h1>Error</h1>
+        <p>{props.message}</p>
         <Link to="/" className={`btn ${classes["btn_back"]}`}>
           Back to home
         </Link>

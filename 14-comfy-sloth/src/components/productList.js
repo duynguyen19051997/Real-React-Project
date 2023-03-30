@@ -1,14 +1,22 @@
 import React from "react";
 import { BsListUl } from "react-icons/bs";
 import { useProductsContext } from "../contexts/productContext";
+import { Error } from "./error";
 import { Loading } from "./loading";
 import { ProductItem } from "./productItem";
 import classes from "./productList.module.css";
 
 export const ProductList = (props) => {
-  const { isProductLoading, products, isProductError } = useProductsContext();
+  const { isProductLoading, products, isProductError, productErrorMessage } =
+    useProductsContext();
 
-  //TODO Check Error
+  if (isProductLoading) {
+    return <Loading />;
+  }
+
+  if (isProductError) {
+    return <Error message={productErrorMessage} />;
+  }
 
   return (
     <section className={classes["products_container"]}>
@@ -17,7 +25,7 @@ export const ProductList = (props) => {
           <BsListUl className={classes["arrange_icon"]} />
         </button>
         <p>
-          <span>22</span> products
+          <span>{products.length}</span> products
         </p>
         <hr className={classes["arrange_line"]} />
         <p>sort by</p>
@@ -28,14 +36,11 @@ export const ProductList = (props) => {
           <option>Name (z-a)</option>
         </select>
       </div>
-      {isProductLoading && <Loading />}
-      {!isProductLoading && !isProductError && (
-        <div className={classes["items_container"]}>
-          {products.map((x) => (
-            <ProductItem key={x.id} {...x} />
-          ))}
-        </div>
-      )}
+      <div className={classes["items_container"]}>
+        {products.map((x) => (
+          <ProductItem key={x.id} {...x} />
+        ))}
+      </div>
     </section>
   );
 };

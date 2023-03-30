@@ -2,6 +2,7 @@ import React from "react";
 
 import { BsSearch } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { formatPrice } from "../utils/helpers";
 
 import classes from "./productItem.module.css";
 
@@ -23,7 +24,7 @@ export const ProductItem = (props) => {
       </div>
       <div className={classes["content_container"]}>
         <h5>{name}</h5>
-        <p>${price}</p>
+        <p>{formatPrice(price)}</p>
       </div>
     </article>
   );

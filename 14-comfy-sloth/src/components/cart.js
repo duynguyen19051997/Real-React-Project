@@ -4,6 +4,7 @@ import { FaMinus, FaPlus, FaTrashAlt } from "react-icons/fa";
 import { BsFillCircleFill } from "react-icons/bs";
 
 import classes from "./cart.module.css";
+import { formatPrice } from "../utils/helpers";
 
 export const Cart = (props) => {
   return (
@@ -25,7 +26,7 @@ export const Cart = (props) => {
             </p>
           </div>
         </div>
-        <p className={classes["price"]}>$30.99</p>
+        <p className={classes["price"]}>{formatPrice(3099)}</p>
         <div className={classes["quantity_action"]}>
           <button className={`btn`}>
             <FaMinus />
@@ -35,7 +36,7 @@ export const Cart = (props) => {
             <FaPlus />
           </button>
         </div>
-        <p className={classes["subtotal"]}>$309.90</p>
+        <p className={classes["subtotal"]}>{formatPrice(3099)}</p>
         <div className={classes["remove_action"]}>
           <button className={`btn ${classes["remove_btn"]}`}>
             <FaTrashAlt />
@@ -53,7 +54,7 @@ export const Cart = (props) => {
             </p>
           </div>
         </div>
-        <p className={classes["price"]}>$30.99</p>
+        <p className={classes["price"]}>{formatPrice(3099)}</p>
         <div className={classes["quantity_action"]}>
           <button className={`btn`}>
             <FaMinus />
@@ -63,7 +64,7 @@ export const Cart = (props) => {
             <FaPlus />
           </button>
         </div>
-        <p className={classes["subtotal"]}>$309.90</p>
+        <p className={classes["subtotal"]}>{formatPrice(3099)}</p>
         <div className={classes["remove_action"]}>
           <button className={`btn ${classes["remove_btn"]}`}>
             <FaTrashAlt />
@@ -81,7 +82,7 @@ export const Cart = (props) => {
             </p>
           </div>
         </div>
-        <p className={classes["price"]}>$30.99</p>
+        <p className={classes["price"]}>{formatPrice(3099)}</p>
         <div className={classes["quantity_action"]}>
           <button className={`btn`}>
             <FaMinus />
@@ -91,7 +92,7 @@ export const Cart = (props) => {
             <FaPlus />
           </button>
         </div>
-        <p className={classes["subtotal"]}>$309.90</p>
+        <p className={classes["subtotal"]}>{formatPrice(3099)}</p>
         <div className={classes["remove_action"]}>
           <button className={`btn ${classes["remove_btn"]}`}>
             <FaTrashAlt />
@@ -111,14 +112,14 @@ export const Cart = (props) => {
         <div className={classes["bill_area"]}>
           <div className={classes["bill"]}>
             <h4>
-              subtotal: <span>$309.90</span>
+              subtotal: <span>{formatPrice(3099)}</span>
             </h4>
             <p>
-              shipping fee: <span>$5.34</span>
+              shipping fee: <span>{formatPrice(3099)}</span>
             </p>
             <hr className={classes["line"]} />
             <h3>
-              order total: <span>$315.24</span>
+              order total: <span>{formatPrice(3099)}</span>
             </h3>
           </div>
           <button className={`btn ${classes["login_btn"]}`}>Login</button>

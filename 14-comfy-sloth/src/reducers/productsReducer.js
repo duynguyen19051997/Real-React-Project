@@ -23,7 +23,7 @@ export const productsReducer = (state, action) => {
         ),
       };
     case GET_SINGLE_PRODUCT:
-      break;
+      return { ...state, products: action.payload.products };
     case IS_LOADING_PRODUCTS_ERROR:
       return {
         ...state,
