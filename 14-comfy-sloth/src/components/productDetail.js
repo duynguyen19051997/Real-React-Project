@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useCallback, useEffect, useState } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import {
   FaMinus,
   FaPlus,
@@ -7,10 +7,48 @@ import {
   FaStar,
   FaStarHalfAlt,
 } from "react-icons/fa";
-
+import { Loading } from "./loading";
+import { Error } from "./error";
 import classes from "./productDetail.module.css";
+import { formatPrice } from "../utils/helpers";
+import axios from "axios";
+import { single_product_url } from "../utils/constants";
 
 export const ProductDetail = (props) => {
+  const { productId } = useParams();
+  const navigate = useNavigate();
+  const [isSingleProductLoading, setIsSingleProductLoading] = useState(false);
+  const [isSingleProductError, setIsSingleProductError] = useState(false);
+  const [singleProductErrorMessage, setSingleProductErrorMessage] =
+    useState("");
+  const [singleProduct, setSingleProduct] = useState({});
+
+  const getSingleProduct = useCallback(() => {
+    setIsSingleProductLoading(true);
+    axios
+      .get(`${single_product_url}${productId}`)
+      .then((response) => {
+        setSingleProduct(response.data);
+        setIsSingleProductLoading(false);
+      })
+      .catch((err) => {
+        setIsSingleProductError(true);
+        setSingleProductErrorMessage(err.message);
+      });
+  }, [productId]);
+
+  useEffect(() => {
+    getSingleProduct();
+  }, [getSingleProduct]);
+
+  if (isSingleProductLoading) {
+    return <Loading />;
+  }
+
+  if (isSingleProductError) {
+    return <Error message={singleProductErrorMessage} />;
+  }
+
   return (
     <section className={classes["product_detail_container"]}>
       <div className={classes["image_container"]}>
@@ -30,7 +68,7 @@ export const ProductDetail = (props) => {
         </div>
       </div>
       <div className={classes["content_container"]}>
-        <h2>modern poster</h2>
+        <h2>{singleProduct.name}</h2>
         <div className={classes["feed_back"]}>
           <FaStar className={classes["start_icon"]} />
           <FaStar className={classes["start_icon"]} />
@@ -39,28 +77,21 @@ export const ProductDetail = (props) => {
           <FaRegStar className={classes["start_icon"]} />
           <p>(100 customer reviews)</p>
         </div>
-        <h4>$30.99</h4>
-        <p>
-          Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore
-          etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat,
-          authentic chillwave trust fund. Viral typewriter fingerstache
-          pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch
-          pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk
-          microdosing gochujang live-edge
-        </p>
+        <h4>{formatPrice(singleProduct.price)}</h4>
+        <p>{singleProduct.description}</p>
         <table>
           <tbody>
             <tr>
               <td className={classes["label"]}>Available</td>
-              <td>In stock</td>
+              <td>{singleProduct.stock > 0 ? "In stock" : "Out of stock"}</td>
             </tr>
             <tr>
               <td className={classes["label"]}>SKU</td>
-              <td>recQ0fMd8T0Vk211E</td>
+              <td>{singleProduct.id}</td>
             </tr>
             <tr>
               <td className={classes["label"]}>Brand</td>
-              <td>liddy</td>
+              <td>{singleProduct.company}</td>
             </tr>
             <tr>
               <td className={classes["label"]}>Colors</td>

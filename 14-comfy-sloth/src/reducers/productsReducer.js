@@ -1,7 +1,6 @@
 import {
   GET_FEATURED_PRODUCTS,
   GET_PRODUCTS,
-  GET_SINGLE_PRODUCT,
   IS_LOADING_PRODUCTS_ERROR,
   LOADING_PRODUCTS_BEGIN,
   LOADING_PRODUCTS_END,
@@ -22,8 +21,6 @@ export const productsReducer = (state, action) => {
           (x) => x.featured === true
         ),
       };
-    case GET_SINGLE_PRODUCT:
-      return { ...state, products: action.payload.products };
     case IS_LOADING_PRODUCTS_ERROR:
       return {
         ...state,

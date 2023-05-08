@@ -3,13 +3,12 @@ import axios from "axios";
 import {
   GET_FEATURED_PRODUCTS,
   GET_PRODUCTS,
-  GET_SINGLE_PRODUCT,
   IS_LOADING_PRODUCTS_ERROR,
   LOADING_PRODUCTS_BEGIN,
   LOADING_PRODUCTS_END,
 } from "../actions/productActions";
 import { productsReducer } from "../reducers/productsReducer";
-import { products_url, single_product_url } from "../utils/constants";
+import { products_url } from "../utils/constants";
 
 const productsInitial = {
   isProductLoading: false,
@@ -49,33 +48,12 @@ export const ProductsProvider = (props) => {
     dispatch({ type: LOADING_PRODUCTS_END });
   };
 
-  const getSingleProduct = async (productId) => {
-    dispatch({ type: LOADING_PRODUCTS_BEGIN });
-    await axios
-      .get(single_product_url)
-      .then((response) => {
-        if (response.data && response.data.length > 0) {
-          dispatch({
-            type: GET_SINGLE_PRODUCT,
-            payload: { products: response.data },
-          });
-        }
-      })
-      .catch((error) => {
-        dispatch({
-          type: IS_LOADING_PRODUCTS_ERROR,
-          payload: { error: error.message },
-        });
-      });
-    dispatch({ type: LOADING_PRODUCTS_END });
-  };
-
   useEffect(() => {
     getProducts();
   }, []);
 
   return (
-    <ProductsContext.Provider value={{ ...state, getSingleProduct }}>
+    <ProductsContext.Provider value={{ ...state }}>
       {props.children}
     </ProductsContext.Provider>
   );
