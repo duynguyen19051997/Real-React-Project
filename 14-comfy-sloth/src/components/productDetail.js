@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 import {
   FaMinus,
   FaPlus,
@@ -9,10 +10,11 @@ import {
 } from "react-icons/fa";
 import { Loading } from "./loading";
 import { Error } from "./error";
-import classes from "./productDetail.module.css";
+import { ProductImages } from "./productImages";
 import { formatPrice } from "../utils/helpers";
-import axios from "axios";
 import { single_product_url } from "../utils/constants";
+
+import classes from "./productDetail.module.css";
 
 export const ProductDetail = (props) => {
   const { productId } = useParams();
@@ -34,12 +36,21 @@ export const ProductDetail = (props) => {
       .catch((err) => {
         setIsSingleProductError(true);
         setSingleProductErrorMessage(err.message);
+        setIsSingleProductLoading(false);
       });
   }, [productId]);
 
   useEffect(() => {
     getSingleProduct();
   }, [getSingleProduct]);
+
+  useEffect(() => {
+    if (isSingleProductError) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
+  }, [isSingleProductError, navigate]);
 
   if (isSingleProductLoading) {
     return <Loading />;
@@ -51,34 +62,21 @@ export const ProductDetail = (props) => {
 
   return (
     <section className={classes["product_detail_container"]}>
-      <div className={classes["image_container"]}>
-        <div className={classes["main_image"]}>
-          <img src="https://images2.imgbox.com/1b/ea/t89LageS_o.jpeg" alt="" />
-        </div>
-        <div className={classes["other_image"]}>
-          <img src="https://images2.imgbox.com/8b/13/XwC9OolK_o.jpeg" alt="" />
-          <img src="https://images2.imgbox.com/da/bb/iXlbK9A6_o.jpeg" alt="" />
-          <img src="https://images2.imgbox.com/6d/47/A11k7xmf_o.jpeg" alt="" />
-          <img src="https://images2.imgbox.com/ca/f3/rPR1K8nP_o.jpeg" alt="" />
-          <img
-            src="https://images2.imgbox.com/1b/ea/t89LageS_o.jpeg"
-            className={classes["img_active"]}
-            alt=""
-          />
-        </div>
-      </div>
+      <ProductImages images={singleProduct.images} />
       <div className={classes["content_container"]}>
         <h2>{singleProduct.name}</h2>
         <div className={classes["feed_back"]}>
+          {/* TODO: Coding Stars */}
           <FaStar className={classes["start_icon"]} />
           <FaStar className={classes["start_icon"]} />
           <FaStarHalfAlt className={classes["start_icon"]} />
           <FaRegStar className={classes["start_icon"]} />
           <FaRegStar className={classes["start_icon"]} />
-          <p>(100 customer reviews)</p>
+          <p>({singleProduct.reviews} customer reviews)</p>
         </div>
         <h4>{formatPrice(singleProduct.price)}</h4>
         <p>{singleProduct.description}</p>
+        <hr className={classes["detail_line"]} />
         <table>
           <tbody>
             <tr>
@@ -94,6 +92,7 @@ export const ProductDetail = (props) => {
               <td>{singleProduct.company}</td>
             </tr>
             <tr>
+              {/* TODO: Coding Color */}
               <td className={classes["label"]}>Colors</td>
               <td>Black</td>
             </tr>
@@ -110,9 +109,11 @@ export const ProductDetail = (props) => {
               <FaPlus />
             </button>
           </div>
-          <button className={`btn ${classes["btn_detail"]}`}>
-            Add to cart
-          </button>
+          {singleProduct.stock > 0 && (
+            <button className={`btn ${classes["btn_detail"]}`}>
+              Add to cart
+            </button>
+          )}
           <Link to="/products" className={`btn ${classes["btn_detail"]}`}>
             Back to products
           </Link>
