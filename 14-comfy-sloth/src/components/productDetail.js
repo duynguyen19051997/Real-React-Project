@@ -1,18 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import {
-  FaMinus,
-  FaPlus,
-  FaRegStar,
-  FaStar,
-  FaStarHalfAlt,
-} from "react-icons/fa";
+import { FaMinus, FaPlus } from "react-icons/fa";
 import { Loading } from "./loading";
 import { Error } from "./error";
 import { ProductImages } from "./productImages";
 import { formatPrice } from "../utils/helpers";
 import { single_product_url } from "../utils/constants";
+import { ProductStars } from "./productStars";
 
 import classes from "./productDetail.module.css";
 
@@ -65,18 +60,12 @@ export const ProductDetail = (props) => {
       <ProductImages images={singleProduct.images} />
       <div className={classes["content_container"]}>
         <h2>{singleProduct.name}</h2>
-        <div className={classes["feed_back"]}>
-          {/* TODO: Coding Stars */}
-          <FaStar className={classes["start_icon"]} />
-          <FaStar className={classes["start_icon"]} />
-          <FaStarHalfAlt className={classes["start_icon"]} />
-          <FaRegStar className={classes["start_icon"]} />
-          <FaRegStar className={classes["start_icon"]} />
-          <p>({singleProduct.reviews} customer reviews)</p>
-        </div>
+        <ProductStars
+          stars={singleProduct.stars}
+          reviews={singleProduct.reviews}
+        />
         <h4>{formatPrice(singleProduct.price)}</h4>
         <p>{singleProduct.description}</p>
-        <hr className={classes["detail_line"]} />
         <table>
           <tbody>
             <tr>
