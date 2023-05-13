@@ -70,36 +70,10 @@
   line-height: 30px;
 }
 
-.content_container table {
-  width: 70%;
-}
-
-.content_container table tr td {
-  color: #37516b;
-  margin-bottom: 5rem;
-}
-
 .label {
   color: #102a42;
   font-weight: 800;
-}
-
-.action {
-  width: 40%;
-}
-
-.action_amount {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-}
-
-.btn_detail {
-  background-color: #ab7a5f;
-  color: #eaded7;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
+  padding-right: 50px;
 }
 
 .detail_line {
@@ -122,10 +96,5 @@
 
   .content_container {
     margin-top: 2rem;
-  }
-
-  .action {
-    margin: 0 auto;
-    text-align: center;
   }
 }

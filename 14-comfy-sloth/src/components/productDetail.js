@@ -1,13 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { FaMinus, FaPlus } from "react-icons/fa";
+
 import { Loading } from "./loading";
 import { Error } from "./error";
 import { ProductImages } from "./productImages";
 import { formatPrice } from "../utils/helpers";
 import { single_product_url } from "../utils/constants";
 import { ProductStars } from "./productStars";
+import { AddToCart } from "./addToCart";
 
 import classes from "./productDetail.module.css";
 
@@ -66,47 +67,20 @@ export const ProductDetail = (props) => {
         />
         <h4>{formatPrice(singleProduct.price)}</h4>
         <p>{singleProduct.description}</p>
-        <table>
-          <tbody>
-            <tr>
-              <td className={classes["label"]}>Available</td>
-              <td>{singleProduct.stock > 0 ? "In stock" : "Out of stock"}</td>
-            </tr>
-            <tr>
-              <td className={classes["label"]}>SKU</td>
-              <td>{singleProduct.id}</td>
-            </tr>
-            <tr>
-              <td className={classes["label"]}>Brand</td>
-              <td>{singleProduct.company}</td>
-            </tr>
-            <tr>
-              {/* TODO: Coding Color */}
-              <td className={classes["label"]}>Colors</td>
-              <td>Black</td>
-            </tr>
-          </tbody>
-        </table>
+        <p>
+          <span className={classes["label"]}>Available:</span>
+          {singleProduct.stock > 0 ? "In stock" : "Out of stock"}
+        </p>
+        <p>
+          <span className={classes["label"]}>SKU:</span>
+          {singleProduct.id}
+        </p>
+        <p>
+          <span className={classes["label"]}>Brand:</span>
+          {singleProduct.company}
+        </p>
         <hr className={classes["detail_line"]} />
-        <div className={classes["action"]}>
-          <div className={classes["action_amount"]}>
-            <button className={`btn`}>
-              <FaMinus />
-            </button>
-            <h3>1</h3>
-            <button className={`btn`}>
-              <FaPlus />
-            </button>
-          </div>
-          {singleProduct.stock > 0 && (
-            <button className={`btn ${classes["btn_detail"]}`}>
-              Add to cart
-            </button>
-          )}
-          <Link to="/products" className={`btn ${classes["btn_detail"]}`}>
-            Back to products
-          </Link>
-        </div>
+        <AddToCart singleProduct={singleProduct} />
       </div>
     </section>
   );

@@ -16,7 +16,7 @@ export const Header = (props) => {
             Home
           </Link>
           <Link to={"/products"} className={`${classes["btn_page"]}`}>
-            Product
+            Products
           </Link>
           <Link to={"/about"} className={classes["btn_page"]}>
             About
