@@ -1,7 +1,13 @@
 import React, { useContext, useEffect, useReducer } from "react";
 import { filtersReducer } from "../reducers/filtersReducer";
 import { useProductsContext } from "./productContext";
-import { LIST_VIEW_PRODUCTS, LOADING_PRODUCTS } from "../actions/filterActions";
+import {
+  LIST_VIEW_PRODUCTS,
+  LOADING_PRODUCTS,
+  PRICE_LOWEST,
+  SORT_PRODUCTS,
+  UPDATE_SORT,
+} from "../actions/filterActions";
 
 const FiltersContext = React.createContext();
 
@@ -9,6 +15,7 @@ const filterInitial = {
   all_products: [],
   filtered_products: [],
   is_list_view: false,
+  sort_by: PRICE_LOWEST,
 };
 
 export const FiltersProvider = (props) => {
@@ -21,6 +28,12 @@ export const FiltersProvider = (props) => {
     }
   }, [products]);
 
+  useEffect(() => {
+    if (products) {
+      dispatch({ type: SORT_PRODUCTS });
+    }
+  }, [products, state.sort_by]);
+
   const setListViewProduct = () => {
     dispatch({
       type: LIST_VIEW_PRODUCTS,
@@ -28,8 +41,14 @@ export const FiltersProvider = (props) => {
     });
   };
 
+  const updateSort = (sortBy) => {
+    dispatch({ type: UPDATE_SORT, payload: { sortBy: sortBy } });
+  };
+
   return (
-    <FiltersContext.Provider value={{ ...state, setListViewProduct }}>
+    <FiltersContext.Provider
+      value={{ ...state, setListViewProduct, updateSort }}
+    >
       {props.children}
     </FiltersContext.Provider>
   );
