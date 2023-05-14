@@ -10,6 +10,7 @@
   display: grid;
   grid-template-columns: auto auto 1fr auto auto;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 .arrange_container p {
@@ -33,6 +34,10 @@
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 2rem;
   row-gap: 1rem;
+}
+
+.items_list_view_container {
+  width: 100%;
 }
 
 .arrange_icon {

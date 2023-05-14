@@ -10,7 +10,12 @@ export const AddToCart = ({ singleProduct = {} }) => {
 
   const incrementAmountHandle = (event) => {
     event.preventDefault();
-    setAmount((prevState) => prevState + 1);
+    setAmount((prevState) => {
+      if (prevState < singleProduct.stock) {
+        return prevState + 1;
+      }
+      return prevState;
+    });
   };
 
   const decreaseAmountHandle = (event) => {
@@ -64,7 +69,11 @@ export const AddToCart = ({ singleProduct = {} }) => {
           <FaMinus />
         </button>
         <h3>{amount}</h3>
-        <button className={`btn`} onClick={incrementAmountHandle}>
+        <button
+          className={`btn`}
+          onClick={incrementAmountHandle}
+          disabled={singleProduct.stock === amount}
+        >
           <FaPlus />
         </button>
       </div>

@@ -5,13 +5,16 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ProductsProvider } from "./contexts/productContext";
+import { FiltersProvider } from "./contexts/filterContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <React.StrictMode>
       <ProductsProvider>
-        <App />
+        <FiltersProvider>
+          <App />
+        </FiltersProvider>
       </ProductsProvider>
     </React.StrictMode>
   </BrowserRouter>
