@@ -1,13 +1,14 @@
-import React, { useCallback, useContext, useEffect, useReducer } from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 import { filtersReducer } from "../reducers/filtersReducer";
 import { useProductsContext } from "./productContext";
-import { LOADING_PRODUCTS } from "../actions/filterActions";
+import { LIST_VIEW_PRODUCTS, LOADING_PRODUCTS } from "../actions/filterActions";
 
 const FiltersContext = React.createContext();
 
 const filterInitial = {
   all_products: [],
   filtered_products: [],
+  is_list_view: false,
 };
 
 export const FiltersProvider = (props) => {
@@ -20,8 +21,15 @@ export const FiltersProvider = (props) => {
     }
   }, [products]);
 
+  const setListViewProduct = () => {
+    dispatch({
+      type: LIST_VIEW_PRODUCTS,
+      payload: { isListView: !state.is_list_view },
+    });
+  };
+
   return (
-    <FiltersContext.Provider value={{ ...state }}>
+    <FiltersContext.Provider value={{ ...state, setListViewProduct }}>
       {props.children}
     </FiltersContext.Provider>
   );

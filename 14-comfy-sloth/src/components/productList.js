@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BsListUl, BsGrid3X2Gap } from "react-icons/bs";
 import { useProductsContext } from "../contexts/productContext";
 import { Error } from "./error";
@@ -12,9 +12,8 @@ export const ProductList = (props) => {
   const { isProductLoading, isProductError, productErrorMessage } =
     useProductsContext();
 
-  const { filtered_products } = useFiltersContext();
-
-  const [isListView, setIsListView] = useState(0);
+  const { filtered_products, is_list_view, setListViewProduct } =
+    useFiltersContext();
 
   if (isProductLoading) {
     return <Loading />;
@@ -24,26 +23,20 @@ export const ProductList = (props) => {
     return <Error message={productErrorMessage} />;
   }
 
+  const changeListViewHandle = (event) => {
+    event.preventDefault();
+    setListViewProduct();
+  };
+
   return (
     <section className={classes["products_container"]}>
       <div className={classes["arrange_container"]}>
-        {isListView ? (
-          <button
-            className={`btn`}
-            onClick={(event) => {
-              event.preventDefault();
-              setIsListView(!isListView);
-            }}
-          >
+        {is_list_view ? (
+          <button className={`btn`} onClick={changeListViewHandle}>
             <BsListUl className={classes["arrange_icon"]} />
           </button>
         ) : (
-          <button
-            className={`btn`}
-            onClick={() => {
-              setIsListView(!isListView);
-            }}
-          >
+          <button className={`btn`} onClick={changeListViewHandle}>
             <BsGrid3X2Gap className={classes["arrange_icon"]} />
           </button>
         )}
@@ -59,17 +52,17 @@ export const ProductList = (props) => {
           <option>Name (z-a)</option>
         </select>
       </div>
-      {isListView ? (
+      {is_list_view ? (
         <div className={classes["items_list_view_container"]}>
-          {filtered_products.map((x) => (
-            <ProductItemListView key={x.id} {...x} />
-          ))}
+          {filtered_products.length > 0 &&
+            filtered_products.map((x) => (
+              <ProductItemListView key={x.id} {...x} />
+            ))}
         </div>
       ) : (
         <div className={classes["items_container"]}>
-          {filtered_products.map((x) => (
-            <ProductItem key={x.id} {...x} />
-          ))}
+          {filtered_products.length > 0 &&
+            filtered_products.map((x) => <ProductItem key={x.id} {...x} />)}
         </div>
       )}
     </section>
