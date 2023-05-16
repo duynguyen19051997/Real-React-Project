@@ -12,10 +12,14 @@ import {
 export const filtersReducer = (state, action) => {
   switch (action.type) {
     case LOADING_PRODUCTS:
+      const products = action.payload.products;
+      const arrPrices = products.map((x) => x.price);
+      const maxPrice = Math.max(...arrPrices);
       return {
         ...state,
-        all_products: action.payload.products,
-        filtered_products: action.payload.products,
+        all_products: products,
+        filtered_products: products,
+        filters: { ...state.filters, max_price: maxPrice, price: maxPrice },
       };
     case LIST_VIEW_PRODUCTS:
       return {
@@ -54,6 +58,7 @@ export const filtersReducer = (state, action) => {
           break;
 
         default:
+          new_filtered_products = filtered_products;
           break;
       }
 

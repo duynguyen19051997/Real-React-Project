@@ -16,6 +16,16 @@ const filterInitial = {
   filtered_products: [],
   is_list_view: false,
   sort_by: PRICE_LOWEST,
+  filters: {
+    text: "",
+    company: "all",
+    category: "all",
+    color: "all",
+    min_price: 0,
+    max_price: 0,
+    price: 0,
+    free_shipping: false,
+  },
 };
 
 export const FiltersProvider = (props) => {
@@ -45,9 +55,13 @@ export const FiltersProvider = (props) => {
     dispatch({ type: UPDATE_SORT, payload: { sortBy: sortBy } });
   };
 
+  const updateFilters = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <FiltersContext.Provider
-      value={{ ...state, setListViewProduct, updateSort }}
+      value={{ ...state, setListViewProduct, updateSort, updateFilters }}
     >
       {props.children}
     </FiltersContext.Provider>

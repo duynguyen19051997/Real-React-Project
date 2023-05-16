@@ -87,6 +87,7 @@
   width: 100%;
   display: flex;
   justify-content: space-around;
+  padding-top: 10px;
 }
 
 .color_icon {
@@ -112,4 +113,11 @@
 .form_control_inline {
   display: flex;
   flex-direction: row;
+}
+
+.btn_color {
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  border-radius: 50%;
 }

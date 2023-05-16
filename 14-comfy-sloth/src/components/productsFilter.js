@@ -1,10 +1,16 @@
 import React from "react";
-
-import { FaCircle } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 
 import classes from "./productsFilter.module.css";
+import { useFiltersContext } from "../contexts/filterContext";
+import { formatPrice } from "../utils/helpers";
 
 export const ProductsFilter = (props) => {
+  const { filters, all_products } = useFiltersContext();
+  const arrCompanies = [...new Set(all_products.map((x) => x.company))];
+  const arrCategories = [...new Set(all_products.map((x) => x.category))];
+  const arrColors = [...new Set(all_products.map((x) => x.colors).flat())];
+
   return (
     <section className={classes["products_filter_container"]}>
       <form className={classes["filter_form"]}>
@@ -19,75 +25,95 @@ export const ProductsFilter = (props) => {
         <div className={classes["form_control"]}>
           <h5>categories</h5>
           <button
-            className={`btn ${classes["btn_filter"]} ${classes["active"]}`}
+            className={`btn ${classes["btn_filter"]} ${
+              filters.category === "all" ? classes["active"] : ""
+            }`}
           >
             All
           </button>
-          <button className={`btn ${classes["btn_filter"]}`}>Office</button>
-          <button className={`btn ${classes["btn_filter"]}`}>
-            Living room
-          </button>
-          <button className={`btn ${classes["btn_filter"]}`}>kitchen</button>
-          <button className={`btn ${classes["btn_filter"]}`}>bedroom</button>
-          <button className={`btn ${classes["btn_filter"]}`}>dinning</button>
-          <button className={`btn ${classes["btn_filter"]}`}>kids</button>
+          {arrCategories.length > 0 &&
+            arrCategories.map((x, index) => {
+              return (
+                <button key={index} className={`btn ${classes["btn_filter"]}`}>
+                  {x}
+                </button>
+              );
+            })}
         </div>
         <div className={classes["form_control"]}>
           <h5>companies</h5>
-          <select>
+          <select
+            value={filters.company}
+            onChange={(e) => {
+              e.preventDefault();
+            }}
+          >
             <option defaultValue="0">All</option>
-            <option defaultValue="1">Macos</option>
-            <option defaultValue="2">Liddy</option>
-            <option defaultValue="3">ikea</option>
-            <option defaultValue="4">caressa</option>
+            {arrCompanies.length > 0 &&
+              arrCompanies.map((x, index) => (
+                <option key={index} defaultValue={x}>
+                  {x}
+                </option>
+              ))}
           </select>
         </div>
         <div className={classes["form_control"]}>
           <h5>colors</h5>
           <div className={classes["color_option"]}>
-            <button className={`btn ${classes["btn_filter"]}`}>All</button>
-            <button className={`btn ${classes["btn_filter"]}`}>
-              <FaCircle
-                className={classes["color_icon"]}
-                style={{ color: "#ff7e7e" }}
-              />
+            <button
+              className={`btn ${classes["btn_filter"]} ${
+                filters.color === "all" ? classes["active"] : ""
+              }`}
+            >
+              All
             </button>
-            <button className={`btn ${classes["btn_filter"]}`}>
-              <FaCircle
-                className={classes["color_icon"]}
-                style={{ color: "#7eff7e" }}
-              />
-            </button>
-            <button className={`btn ${classes["btn_filter"]}`}>
-              <FaCircle
-                className={`${classes["color_icon"]} ${classes["active_color"]}`}
-                style={{ color: "#7e7eff" }}
-              />
-            </button>
-            <button className={`btn ${classes["btn_filter"]}`}>
-              <FaCircle
-                className={classes["color_icon"]}
-                style={{ color: "#7e7e7e" }}
-              />
-            </button>
-            <button className={`btn ${classes["btn_filter"]}`}>
-              <FaCircle
-                className={classes["color_icon"]}
-                style={{ color: "#ffdb7e" }}
-              />
-            </button>
+            {arrColors.length > 0 &&
+              arrColors.map((x, index) => {
+                return (
+                  <button
+                    key={index}
+                    className={`btn ${classes["btn_color"]}`}
+                    style={{
+                      backgroundColor: x,
+                    }}
+                  >
+                    <FaCheck
+                      style={{
+                        color: `${
+                          x === filters.color
+                            ? `${x === "white" ? "#ab7a5f" : "white"}`
+                            : x
+                        }`,
+                        fontWeight: "bolder",
+                      }}
+                    />
+                  </button>
+                );
+              })}
           </div>
         </div>
         <div className={classes["form_control"]}>
           <h5>prices</h5>
-          <p>$1000</p>
-          <input type="range" name="price" min="0" max="32000" />
+          <p>{formatPrice(filters.price)}</p>
+          <input
+            type="range"
+            name="price"
+            min={filters.min_price}
+            max={filters.max_price}
+          />
         </div>
         <div
           className={`${classes["form_control"]} ${classes["form_control_inline"]}`}
         >
           <p>Free shipping</p>
-          <input type="checkbox" name="free_shipping"></input>
+          <input
+            type="checkbox"
+            name="free_shipping"
+            checked={filters.free_shipping}
+            onChange={(e) => {
+              e.preventDefault();
+            }}
+          ></input>
         </div>
         <div className={classes["form_control_inline"]}>
           <button className={`btn ${classes["btn_clear_filter"]}`}>
