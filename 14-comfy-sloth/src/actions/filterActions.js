@@ -6,3 +6,5 @@ export const NAME_A_Z = "NAME_A_Z";
 export const NAME_Z_A = "NAME_Z_A";
 export const UPDATE_SORT = "UPDATE_SORT";
 export const SORT_PRODUCTS = "SORT_PRODUCTS";
+export const UPDATE_FILTERS = "UPDATE_FILTERS";
+export const FILTER_PRODUCTS = "FILTER_PRODUCTS";

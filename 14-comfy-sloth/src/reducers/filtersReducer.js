@@ -7,6 +7,8 @@ import {
   PRICE_HIGHEST,
   NAME_A_Z,
   NAME_Z_A,
+  UPDATE_FILTERS,
+  FILTER_PRODUCTS,
 } from "../actions/filterActions";
 
 export const filtersReducer = (state, action) => {
@@ -66,6 +68,11 @@ export const filtersReducer = (state, action) => {
         ...state,
         filtered_products: new_filtered_products,
       };
+    case UPDATE_FILTERS:
+      const { name, value } = action.payload;
+      return { ...state, filters: { ...state.filters, [name]: value } };
+    case FILTER_PRODUCTS:
+      return { ...state };
 
     default:
       return { ...state };

@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useReducer } from "react";
 import { filtersReducer } from "../reducers/filtersReducer";
 import { useProductsContext } from "./productContext";
 import {
+  FILTER_PRODUCTS,
   LIST_VIEW_PRODUCTS,
   LOADING_PRODUCTS,
   PRICE_LOWEST,
   SORT_PRODUCTS,
+  UPDATE_FILTERS,
   UPDATE_SORT,
 } from "../actions/filterActions";
 
@@ -41,8 +43,9 @@ export const FiltersProvider = (props) => {
   useEffect(() => {
     if (products) {
       dispatch({ type: SORT_PRODUCTS });
+      dispatch({ type: FILTER_PRODUCTS });
     }
-  }, [products, state.sort_by]);
+  }, [products, state.sort_by, state.filters]);
 
   const setListViewProduct = () => {
     dispatch({
@@ -57,11 +60,22 @@ export const FiltersProvider = (props) => {
 
   const updateFilters = (event) => {
     event.preventDefault();
+    let name = event.target.name;
+    let value = event.target.value;
+    dispatch({ type: UPDATE_FILTERS, payload: { name: name, value: value } });
   };
+
+  const clearFilters = () => {};
 
   return (
     <FiltersContext.Provider
-      value={{ ...state, setListViewProduct, updateSort, updateFilters }}
+      value={{
+        ...state,
+        setListViewProduct,
+        updateSort,
+        updateFilters,
+        clearFilters,
+      }}
     >
       {props.children}
     </FiltersContext.Provider>

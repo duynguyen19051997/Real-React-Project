@@ -6,20 +6,28 @@ import { useFiltersContext } from "../contexts/filterContext";
 import { formatPrice } from "../utils/helpers";
 
 export const ProductsFilter = (props) => {
-  const { filters, all_products } = useFiltersContext();
+  const { filters, all_products, updateFilters, clearFilters } =
+    useFiltersContext();
   const arrCompanies = [...new Set(all_products.map((x) => x.company))];
   const arrCategories = [...new Set(all_products.map((x) => x.category))];
   const arrColors = [...new Set(all_products.map((x) => x.colors).flat())];
 
   return (
     <section className={classes["products_filter_container"]}>
-      <form className={classes["filter_form"]}>
+      <form
+        className={classes["filter_form"]}
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <div className={classes["form_control"]}>
           <input
             type="text"
-            name="search"
+            name="text"
             placeholder="Search"
             className={classes["search_input"]}
+            value={filters.text}
+            onChange={updateFilters}
           />
         </div>
         <div className={classes["form_control"]}>
@@ -28,13 +36,20 @@ export const ProductsFilter = (props) => {
             className={`btn ${classes["btn_filter"]} ${
               filters.category === "all" ? classes["active"] : ""
             }`}
+            name="category"
+            onClick={updateFilters}
           >
             All
           </button>
           {arrCategories.length > 0 &&
             arrCategories.map((x, index) => {
               return (
-                <button key={index} className={`btn ${classes["btn_filter"]}`}>
+                <button
+                  key={index}
+                  className={`btn ${classes["btn_filter"]}`}
+                  name="category"
+                  onClick={updateFilters}
+                >
                   {x}
                 </button>
               );
@@ -44,9 +59,8 @@ export const ProductsFilter = (props) => {
           <h5>companies</h5>
           <select
             value={filters.company}
-            onChange={(e) => {
-              e.preventDefault();
-            }}
+            name="company"
+            onChange={updateFilters}
           >
             <option defaultValue="0">All</option>
             {arrCompanies.length > 0 &&
@@ -64,6 +78,8 @@ export const ProductsFilter = (props) => {
               className={`btn ${classes["btn_filter"]} ${
                 filters.color === "all" ? classes["active"] : ""
               }`}
+              name="color"
+              onClick={updateFilters}
             >
               All
             </button>
@@ -76,6 +92,8 @@ export const ProductsFilter = (props) => {
                     style={{
                       backgroundColor: x,
                     }}
+                    name="color"
+                    onClick={updateFilters}
                   >
                     <FaCheck
                       style={{
@@ -100,6 +118,8 @@ export const ProductsFilter = (props) => {
             name="price"
             min={filters.min_price}
             max={filters.max_price}
+            value={filters.price}
+            onChange={updateFilters}
           />
         </div>
         <div
@@ -109,14 +129,18 @@ export const ProductsFilter = (props) => {
           <input
             type="checkbox"
             name="free_shipping"
-            checked={filters.free_shipping}
-            onChange={(e) => {
-              e.preventDefault();
-            }}
+            value={filters.free_shipping}
+            onChange={updateFilters}
           ></input>
         </div>
         <div className={classes["form_control_inline"]}>
-          <button className={`btn ${classes["btn_clear_filter"]}`}>
+          <button
+            className={`btn ${classes["btn_clear_filter"]}`}
+            onClick={(e) => {
+              e.preventDefault();
+              clearFilters();
+            }}
+          >
             Clear filter
           </button>
         </div>
