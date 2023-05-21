@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useReducer } from "react";
 import { filtersReducer } from "../reducers/filtersReducer";
 import { useProductsContext } from "./productContext";
 import {
+  ALL_FILTER_DEFAULTS,
   FILTER_PRODUCTS,
   LIST_VIEW_PRODUCTS,
   LOADING_PRODUCTS,
@@ -20,9 +21,9 @@ const filterInitial = {
   sort_by: PRICE_LOWEST,
   filters: {
     text: "",
-    company: "all",
-    category: "all",
-    color: "all",
+    company: ALL_FILTER_DEFAULTS,
+    category: ALL_FILTER_DEFAULTS,
+    color: ALL_FILTER_DEFAULTS,
     min_price: 0,
     max_price: 0,
     price: 0,
@@ -41,11 +42,9 @@ export const FiltersProvider = (props) => {
   }, [products]);
 
   useEffect(() => {
-    if (products) {
-      dispatch({ type: SORT_PRODUCTS });
-      dispatch({ type: FILTER_PRODUCTS });
-    }
-  }, [products, state.sort_by, state.filters]);
+    dispatch({ type: SORT_PRODUCTS });
+    //dispatch({ type: FILTER_PRODUCTS });
+  }, [state.sort_by]);
 
   const setListViewProduct = () => {
     dispatch({
@@ -62,6 +61,9 @@ export const FiltersProvider = (props) => {
     event.preventDefault();
     let name = event.target.name;
     let value = event.target.value;
+    if (name === "color") {
+      value = event.target.dataset.color;
+    }
     dispatch({ type: UPDATE_FILTERS, payload: { name: name, value: value } });
   };
 

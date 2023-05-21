@@ -72,7 +72,7 @@ export const filtersReducer = (state, action) => {
       const { name, value } = action.payload;
       return { ...state, filters: { ...state.filters, [name]: value } };
     case FILTER_PRODUCTS:
-      return { ...state };
+      break;
 
     default:
       return { ...state };

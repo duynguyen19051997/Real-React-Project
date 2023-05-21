@@ -3,14 +3,15 @@ import { FaCheck } from "react-icons/fa";
 
 import classes from "./productsFilter.module.css";
 import { useFiltersContext } from "../contexts/filterContext";
-import { formatPrice } from "../utils/helpers";
+import { formatPrice, getUniqueValues } from "../utils/helpers";
+import { ALL_FILTER_DEFAULTS } from "../actions/filterActions";
 
 export const ProductsFilter = (props) => {
   const { filters, all_products, updateFilters, clearFilters } =
     useFiltersContext();
-  const arrCompanies = [...new Set(all_products.map((x) => x.company))];
-  const arrCategories = [...new Set(all_products.map((x) => x.category))];
-  const arrColors = [...new Set(all_products.map((x) => x.colors).flat())];
+  const arrCategories = getUniqueValues(all_products, "category");
+  const arrCompanies = getUniqueValues(all_products, "company");
+  const arrColors = getUniqueValues(all_products, "colors", false);
 
   return (
     <section className={classes["products_filter_container"]}>
@@ -32,23 +33,18 @@ export const ProductsFilter = (props) => {
         </div>
         <div className={classes["form_control"]}>
           <h5>categories</h5>
-          <button
-            className={`btn ${classes["btn_filter"]} ${
-              filters.category === "all" ? classes["active"] : ""
-            }`}
-            name="category"
-            onClick={updateFilters}
-          >
-            All
-          </button>
           {arrCategories.length > 0 &&
             arrCategories.map((x, index) => {
               return (
                 <button
                   key={index}
-                  className={`btn ${classes["btn_filter"]}`}
+                  className={`btn ${classes["btn_filter"]} ${
+                    filters.category === x ? classes["active"] : ""
+                  }`}
+                  type="button"
                   name="category"
                   onClick={updateFilters}
+                  value={x}
                 >
                   {x}
                 </button>
@@ -62,7 +58,6 @@ export const ProductsFilter = (props) => {
             name="company"
             onChange={updateFilters}
           >
-            <option defaultValue="0">All</option>
             {arrCompanies.length > 0 &&
               arrCompanies.map((x, index) => (
                 <option key={index} defaultValue={x}>
@@ -76,10 +71,12 @@ export const ProductsFilter = (props) => {
           <div className={classes["color_option"]}>
             <button
               className={`btn ${classes["btn_filter"]} ${
-                filters.color === "all" ? classes["active"] : ""
+                filters.color === ALL_FILTER_DEFAULTS ? classes["active"] : ""
               }`}
+              type="button"
               name="color"
               onClick={updateFilters}
+              data-color={ALL_FILTER_DEFAULTS}
             >
               All
             </button>
@@ -92,16 +89,14 @@ export const ProductsFilter = (props) => {
                     style={{
                       backgroundColor: x,
                     }}
+                    type="button"
                     name="color"
                     onClick={updateFilters}
+                    data-color={x}
                   >
                     <FaCheck
                       style={{
-                        color: `${
-                          x === filters.color
-                            ? `${x === "white" ? "#ab7a5f" : "white"}`
-                            : x
-                        }`,
+                        color: `${x === filters.color ? "white" : x}`,
                         fontWeight: "bolder",
                       }}
                     />
