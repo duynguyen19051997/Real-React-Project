@@ -42,6 +42,7 @@
   padding: 0.25rem 0;
   display: contents;
   color: #102a42;
+  margin-bottom: 10px;
 }
 
 .form_control p {
@@ -63,6 +64,7 @@
 }
 
 .btn_filter {
+  width: fit-content;
   text-align: left;
   background-color: #ffff;
   border: none;
@@ -113,6 +115,7 @@
 .form_control_inline {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
 }
 
 .btn_color {

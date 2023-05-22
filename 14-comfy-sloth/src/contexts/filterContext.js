@@ -3,6 +3,7 @@ import { filtersReducer } from "../reducers/filtersReducer";
 import { useProductsContext } from "./productContext";
 import {
   ALL_FILTER_DEFAULTS,
+  CLEAR_FILTERS,
   FILTER_PRODUCTS,
   LIST_VIEW_PRODUCTS,
   LOADING_PRODUCTS,
@@ -36,15 +37,13 @@ export const FiltersProvider = (props) => {
   const [state, dispatch] = useReducer(filtersReducer, filterInitial);
 
   useEffect(() => {
-    if (products) {
-      dispatch({ type: LOADING_PRODUCTS, payload: { products: products } });
-    }
+    dispatch({ type: LOADING_PRODUCTS, payload: { products: products } });
   }, [products]);
 
   useEffect(() => {
+    dispatch({ type: FILTER_PRODUCTS });
     dispatch({ type: SORT_PRODUCTS });
-    //dispatch({ type: FILTER_PRODUCTS });
-  }, [state.sort_by]);
+  }, [products, state.filters, state.sort_by]);
 
   const setListViewProduct = () => {
     dispatch({
@@ -57,17 +56,13 @@ export const FiltersProvider = (props) => {
     dispatch({ type: UPDATE_SORT, payload: { sortBy: sortBy } });
   };
 
-  const updateFilters = (event) => {
-    event.preventDefault();
-    let name = event.target.name;
-    let value = event.target.value;
-    if (name === "color") {
-      value = event.target.dataset.color;
-    }
+  const updateFilters = (name, value) => {
     dispatch({ type: UPDATE_FILTERS, payload: { name: name, value: value } });
   };
 
-  const clearFilters = () => {};
+  const clearFilters = () => {
+    dispatch({ type: CLEAR_FILTERS });
+  };
 
   return (
     <FiltersContext.Provider

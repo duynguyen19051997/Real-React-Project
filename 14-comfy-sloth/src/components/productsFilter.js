@@ -13,6 +13,16 @@ export const ProductsFilter = (props) => {
   const arrCompanies = getUniqueValues(all_products, "company");
   const arrColors = getUniqueValues(all_products, "colors", false);
 
+  const changeTextHandle = (event) => {
+    updateFilters("text", event.target.value);
+  };
+  const changeCompanyHandle = (event) => {
+    updateFilters("company", event.target.value);
+  };
+  const changePriceHandle = (event) => {
+    updateFilters("price", Number(event.target.value));
+  };
+
   return (
     <section className={classes["products_filter_container"]}>
       <form
@@ -28,7 +38,7 @@ export const ProductsFilter = (props) => {
             placeholder="Search"
             className={classes["search_input"]}
             value={filters.text}
-            onChange={updateFilters}
+            onChange={changeTextHandle}
           />
         </div>
         <div className={classes["form_control"]}>
@@ -43,8 +53,9 @@ export const ProductsFilter = (props) => {
                   }`}
                   type="button"
                   name="category"
-                  onClick={updateFilters}
-                  value={x}
+                  onClick={(event) => {
+                    updateFilters("category", x);
+                  }}
                 >
                   {x}
                 </button>
@@ -56,7 +67,7 @@ export const ProductsFilter = (props) => {
           <select
             value={filters.company}
             name="company"
-            onChange={updateFilters}
+            onChange={changeCompanyHandle}
           >
             {arrCompanies.length > 0 &&
               arrCompanies.map((x, index) => (
@@ -75,10 +86,11 @@ export const ProductsFilter = (props) => {
               }`}
               type="button"
               name="color"
-              onClick={updateFilters}
-              data-color={ALL_FILTER_DEFAULTS}
+              onClick={(event) => {
+                updateFilters("color", ALL_FILTER_DEFAULTS);
+              }}
             >
-              All
+              {ALL_FILTER_DEFAULTS}
             </button>
             {arrColors.length > 0 &&
               arrColors.map((x, index) => {
@@ -91,8 +103,9 @@ export const ProductsFilter = (props) => {
                     }}
                     type="button"
                     name="color"
-                    onClick={updateFilters}
-                    data-color={x}
+                    onClick={(event) => {
+                      updateFilters("color", x);
+                    }}
                   >
                     <FaCheck
                       style={{
@@ -107,14 +120,14 @@ export const ProductsFilter = (props) => {
         </div>
         <div className={classes["form_control"]}>
           <h5>prices</h5>
-          <p>{formatPrice(filters.price)}</p>
+          <p style={{ marginTop: "5px" }}>{formatPrice(filters.price)}</p>
           <input
             type="range"
             name="price"
             min={filters.min_price}
             max={filters.max_price}
             value={filters.price}
-            onChange={updateFilters}
+            onChange={changePriceHandle}
           />
         </div>
         <div
@@ -124,8 +137,10 @@ export const ProductsFilter = (props) => {
           <input
             type="checkbox"
             name="free_shipping"
-            value={filters.free_shipping}
-            onChange={updateFilters}
+            checked={filters.free_shipping}
+            onChange={(event) => {
+              updateFilters("free_shipping", event.target.checked);
+            }}
           ></input>
         </div>
         <div className={classes["form_control_inline"]}>

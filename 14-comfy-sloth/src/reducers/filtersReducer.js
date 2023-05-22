@@ -9,6 +9,8 @@ import {
   NAME_Z_A,
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
+  CLEAR_FILTERS,
+  ALL_FILTER_DEFAULTS,
 } from "../actions/filterActions";
 
 export const filtersReducer = (state, action) => {
@@ -35,7 +37,7 @@ export const filtersReducer = (state, action) => {
       };
     case SORT_PRODUCTS:
       const { sort_by, filtered_products } = state;
-      let new_filtered_products = [];
+      let new_filtered_products = [...filtered_products];
 
       switch (sort_by) {
         case PRICE_LOWEST:
@@ -60,7 +62,6 @@ export const filtersReducer = (state, action) => {
           break;
 
         default:
-          new_filtered_products = filtered_products;
           break;
       }
 
@@ -71,8 +72,56 @@ export const filtersReducer = (state, action) => {
     case UPDATE_FILTERS:
       const { name, value } = action.payload;
       return { ...state, filters: { ...state.filters, [name]: value } };
+    case CLEAR_FILTERS:
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          text: "",
+          company: ALL_FILTER_DEFAULTS,
+          category: ALL_FILTER_DEFAULTS,
+          color: ALL_FILTER_DEFAULTS,
+          price: state.filters.max_price,
+          free_shipping: false,
+        },
+      };
     case FILTER_PRODUCTS:
-      break;
+      const { text, category, company, color, price, free_shipping } =
+        state.filters;
+      let temp_products = [...state.all_products];
+      if (text) {
+        temp_products = temp_products.filter((x) =>
+          x.name.toLowerCase().includes(text.toLowerCase())
+        );
+      }
+
+      if (category !== ALL_FILTER_DEFAULTS) {
+        temp_products = temp_products.filter(
+          (x) => x.category.toLowerCase() === category.toLowerCase()
+        );
+      }
+
+      if (company !== ALL_FILTER_DEFAULTS) {
+        temp_products = temp_products.filter(
+          (x) => x.company.toLowerCase() === company.toLowerCase()
+        );
+      }
+
+      if (color !== ALL_FILTER_DEFAULTS) {
+        temp_products = temp_products.filter((x) => {
+          return x.colors.find((c) => c === color);
+        });
+      }
+
+      temp_products = temp_products.filter((x) => x.price <= price);
+
+      if (free_shipping) {
+        temp_products = temp_products.filter(
+          (x) => x.shipping === free_shipping
+        );
+      }
+
+      return { ...state, filtered_products: temp_products };
 
     default:
       return { ...state };
