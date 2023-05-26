@@ -86,12 +86,13 @@
   top: -10px;
   left: 75px;
   background-color: #ab7a5f;
-  min-width: 30px;
+  min-width: 20px;
   height: auto;
   width: auto;
   border-radius: 45%;
   font-size: 1rem;
   color: #ffff;
+  text-align: center;
 }
 
 @media screen and (max-width: 1440px) {

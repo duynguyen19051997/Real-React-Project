@@ -1,15 +1,17 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { FaMinus, FaPlus, FaCheck } from "react-icons/fa";
 
 import classes from "./addToCart.module.css";
+import { useCartContext } from "../contexts/cartContext";
 
 export const AddToCart = ({ singleProduct = {} }) => {
   const { colors = [] } = singleProduct;
   const [amount, setAmount] = useState(1);
   const [mainColor, setMainColor] = useState(colors[0]);
+  const { addCart } = useCartContext();
 
   const incrementAmountHandle = (event) => {
-    event.preventDefault();
     setAmount((prevState) => {
       if (prevState < singleProduct.stock) {
         return prevState + 1;
@@ -19,13 +21,17 @@ export const AddToCart = ({ singleProduct = {} }) => {
   };
 
   const decreaseAmountHandle = (event) => {
-    event.preventDefault();
     setAmount((prevState) => {
       if (prevState > 1) {
         return prevState - 1;
       }
       return prevState;
     });
+  };
+
+  const addCartHandle = () => {
+    const product = { ...singleProduct, color: mainColor, amount: amount };
+    addCart(product);
   };
 
   return (
@@ -78,7 +84,13 @@ export const AddToCart = ({ singleProduct = {} }) => {
         </button>
       </div>
       {singleProduct.stock > 0 && (
-        <button className={`btn ${classes["btn_detail"]}`}>Add to cart</button>
+        <Link
+          to="/cart"
+          className={`btn ${classes["btn_detail"]}`}
+          onClick={addCartHandle}
+        >
+          Add to cart
+        </Link>
       )}
     </div>
   );

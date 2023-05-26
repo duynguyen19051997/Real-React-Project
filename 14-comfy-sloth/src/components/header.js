@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import { BsFillCartFill, BsFillPersonPlusFill } from "react-icons/bs";
 import comfy_sloth from "../images/comfy_sloth.svg";
 import classes from "./header.module.css";
+import { useCartContext } from "../contexts/cartContext";
 
 export const Header = (props) => {
+  const { total_items } = useCartContext();
+
   return (
     <section className={classes["header"]}>
       <div className={classes["header_center"]}>
@@ -26,7 +29,9 @@ export const Header = (props) => {
           <Link to={"/cart"} className={`${classes["btn_action"]}`}>
             Cart
             <BsFillCartFill className={classes["icon"]} />
-            <span className={classes["cart_value"]}>100</span>
+            {total_items > 0 && (
+              <span className={classes["cart_value"]}>{total_items}</span>
+            )}
           </Link>
           <button className={classes["btn_action"]}>
             Login

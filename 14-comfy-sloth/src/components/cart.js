@@ -5,8 +5,11 @@ import { BsFillCircleFill } from "react-icons/bs";
 
 import classes from "./cart.module.css";
 import { formatPrice } from "../utils/helpers";
+import { useCartContext } from "../contexts/cartContext";
 
 export const Cart = (props) => {
+  const { cart } = useCartContext();
+
   return (
     <section className={classes["cart_container"]}>
       <div className={classes["cart_title"]}>
@@ -16,90 +19,43 @@ export const Cart = (props) => {
         <h5>Subtotal</h5>
       </div>
       <hr className={classes["line"]} />
-      <article className={classes["cart_detail"]}>
-        <div className={classes["item_info"]}>
-          <img src="https://images2.imgbox.com/8b/13/XwC9OolK_o.jpeg" alt="" />
-          <div className={classes["item_content"]}>
-            <h5>modern poster</h5>
-            <p>
-              Color: <BsFillCircleFill style={{ color: "black" }} />
-            </p>
-          </div>
-        </div>
-        <p className={classes["price"]}>{formatPrice(3099)}</p>
-        <div className={classes["quantity_action"]}>
-          <button className={`btn`}>
-            <FaMinus />
-          </button>
-          <h3>1</h3>
-          <button className={`btn`}>
-            <FaPlus />
-          </button>
-        </div>
-        <p className={classes["subtotal"]}>{formatPrice(3099)}</p>
-        <div className={classes["remove_action"]}>
-          <button className={`btn ${classes["remove_btn"]}`}>
-            <FaTrashAlt />
-          </button>
-        </div>
-      </article>
-      <hr className={classes["line"]} />
-      <article className={classes["cart_detail"]}>
-        <div className={classes["item_info"]}>
-          <img src="https://images2.imgbox.com/8b/13/XwC9OolK_o.jpeg" alt="" />
-          <div className={classes["item_content"]}>
-            <h5>modern poster</h5>
-            <p>
-              Color: <BsFillCircleFill style={{ color: "black" }} />
-            </p>
-          </div>
-        </div>
-        <p className={classes["price"]}>{formatPrice(3099)}</p>
-        <div className={classes["quantity_action"]}>
-          <button className={`btn`}>
-            <FaMinus />
-          </button>
-          <h3>1</h3>
-          <button className={`btn`}>
-            <FaPlus />
-          </button>
-        </div>
-        <p className={classes["subtotal"]}>{formatPrice(3099)}</p>
-        <div className={classes["remove_action"]}>
-          <button className={`btn ${classes["remove_btn"]}`}>
-            <FaTrashAlt />
-          </button>
-        </div>
-      </article>
-      <hr className={classes["line"]} />
-      <article className={classes["cart_detail"]}>
-        <div className={classes["item_info"]}>
-          <img src="https://images2.imgbox.com/8b/13/XwC9OolK_o.jpeg" alt="" />
-          <div className={classes["item_content"]}>
-            <h5>modern poster</h5>
-            <p>
-              Color: <BsFillCircleFill style={{ color: "black" }} />
-            </p>
-          </div>
-        </div>
-        <p className={classes["price"]}>{formatPrice(3099)}</p>
-        <div className={classes["quantity_action"]}>
-          <button className={`btn`}>
-            <FaMinus />
-          </button>
-          <h3>1</h3>
-          <button className={`btn`}>
-            <FaPlus />
-          </button>
-        </div>
-        <p className={classes["subtotal"]}>{formatPrice(3099)}</p>
-        <div className={classes["remove_action"]}>
-          <button className={`btn ${classes["remove_btn"]}`}>
-            <FaTrashAlt />
-          </button>
-        </div>
-      </article>
-      <hr className={classes["line"]} />
+      {cart &&
+        cart.map((x) => {
+          return (
+            <React.Fragment>
+              <article className={classes["cart_detail"]}>
+                <div className={classes["item_info"]}>
+                  <img src={x.image} alt={x.name} />
+                  <div className={classes["item_content"]}>
+                    <h5>modern poster</h5>
+                    <p>
+                      Color: <BsFillCircleFill style={{ color: x.color }} />
+                    </p>
+                  </div>
+                </div>
+                <p className={classes["price"]}>{formatPrice(x.price)}</p>
+                <div className={classes["quantity_action"]}>
+                  <button className={`btn`}>
+                    <FaMinus />
+                  </button>
+                  <h3>{x.amount}</h3>
+                  <button className={`btn`}>
+                    <FaPlus />
+                  </button>
+                </div>
+                <p className={classes["subtotal"]}>
+                  {formatPrice(x.price * x.amount)}
+                </p>
+                <div className={classes["remove_action"]}>
+                  <button className={`btn ${classes["remove_btn"]}`}>
+                    <FaTrashAlt />
+                  </button>
+                </div>
+              </article>
+              <hr className={classes["line"]} />
+            </React.Fragment>
+          );
+        })}
       <div className={classes["shopping_action"]}>
         <Link to={"/products"} className={`btn ${classes["continue_btn"]}`}>
           Continue Shopping
