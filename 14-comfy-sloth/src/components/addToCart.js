@@ -30,7 +30,12 @@ export const AddToCart = ({ singleProduct = {} }) => {
   };
 
   const addCartHandle = () => {
-    const product = { ...singleProduct, color: mainColor, amount: amount };
+    const product = {
+      ...singleProduct,
+      color: mainColor,
+      amount: amount,
+      image: singleProduct.images[0].url,
+    };
     addCart(product);
   };
 
@@ -66,23 +71,25 @@ export const AddToCart = ({ singleProduct = {} }) => {
             );
           })}
       </div>
-      <div className={classes["action_amount"]}>
-        <button
-          className={`btn`}
-          onClick={decreaseAmountHandle}
-          disabled={amount === 1}
-        >
-          <FaMinus />
-        </button>
-        <h3>{amount}</h3>
-        <button
-          className={`btn`}
-          onClick={incrementAmountHandle}
-          disabled={singleProduct.stock === amount}
-        >
-          <FaPlus />
-        </button>
-      </div>
+      {singleProduct.stock > 0 && (
+        <div className={classes["action_amount"]}>
+          <button
+            className={`btn`}
+            onClick={decreaseAmountHandle}
+            disabled={amount === 1}
+          >
+            <FaMinus />
+          </button>
+          <h3>{amount}</h3>
+          <button
+            className={`btn`}
+            onClick={incrementAmountHandle}
+            disabled={singleProduct.stock === amount}
+          >
+            <FaPlus />
+          </button>
+        </div>
+      )}
       {singleProduct.stock > 0 && (
         <Link
           to="/cart"

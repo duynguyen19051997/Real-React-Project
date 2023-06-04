@@ -31,8 +31,8 @@ export const CartProvider = (props) => {
     });
   };
 
-  const deleteCart = (id) => {
-    dispatch({ type: DELETE_CART, payload: { id: id } });
+  const deleteCart = (id, color) => {
+    dispatch({ type: DELETE_CART, payload: { id: id, color: color } });
   };
 
   useEffect(() => {
