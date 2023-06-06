@@ -1,5 +1,6 @@
 import {
   ADD_CART,
+  CLEAR_CART,
   DELETE_CART,
   UPDATE_CART,
   UPDATE_TOTAL_AMOUNT,
@@ -9,40 +10,51 @@ import {
 export const cartReducer = (state, action) => {
   switch (action.type) {
     case ADD_CART:
-      const { id, name, color, amount, price, free_shipping, max_amount } =
+      const { id, name, color, amount, price, shipping, stock } =
         action.payload.single_product;
-      const tempItem = state.cart.find((c) => c.id === id && c.color === color);
+      const addExistItem = state.cart.find((c) => c.cart_id === id + color);
 
-      if (tempItem) {
-        const tempCart = state.cart.map((x) => {
-          if (x.id === id && x.color === color) {
+      if (addExistItem) {
+        const newCart = state.cart.map((x) => {
+          if (x.cart_id === id + color) {
             let newAmount = x.amount + amount;
-            if (newAmount > max_amount) {
-              newAmount = max_amount;
+            if (newAmount > x.max_amount) {
+              newAmount = x.max_amount;
             }
             return { ...x, amount: newAmount };
           } else {
             return x;
           }
         });
-        return { ...state, cart: [...tempCart] };
+        return { ...state, cart: newCart };
       } else {
         const newItem = {
-          id: id,
+          product_id: id,
+          cart_id: id + color,
           name: name,
           color: color,
           amount: amount,
           price: price,
           image: action.payload.single_product.images[0].url,
-          free_shipping: free_shipping,
-          max_amount: max_amount,
+          free_shipping: shipping,
+          max_amount: stock,
         };
         return { ...state, cart: [...state.cart, newItem] };
       }
     case UPDATE_CART:
       break;
     case DELETE_CART:
-      break;
+      const deleteTempCart = state.cart.filter(
+        (c) => c.cart_id !== action.payload.cart_id
+      );
+      return { ...state, cart: deleteTempCart };
+    case CLEAR_CART:
+      return {
+        cart: [],
+        total_items: 0,
+        total_amount: 0,
+        shipping_fee: 534,
+      };
     case UPDATE_TOTAL_ITEMS:
       return { ...state };
     case UPDATE_TOTAL_AMOUNT:

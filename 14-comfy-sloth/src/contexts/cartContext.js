@@ -2,14 +2,23 @@ import React, { useContext, useEffect, useReducer } from "react";
 import { cartReducer } from "../reducers/cartReducer";
 import {
   ADD_CART,
+  CLEAR_CART,
   DELETE_CART,
   UPDATE_CART,
   UPDATE_TOTAL_AMOUNT,
   UPDATE_TOTAL_ITEMS,
 } from "../actions/cartActions";
 
+const getLocalStorageCart = () => {
+  let cart = localStorage.getItem("cart");
+  if (cart) {
+    return JSON.parse(cart);
+  }
+  return [];
+};
+
 const cartInitial = {
-  cart: [],
+  cart: getLocalStorageCart(),
   total_items: 0,
   total_amount: 0,
   shipping_fee: 534,
@@ -24,26 +33,31 @@ export const CartProvider = (props) => {
     dispatch({ type: ADD_CART, payload: { single_product: single_product } });
   };
 
-  const updateCart = (id, color, amount) => {
+  const updateAmountCart = (cart_id, amount) => {
     dispatch({
       type: UPDATE_CART,
-      payload: { id: id, color: color, amount: amount },
+      payload: { cart_id: cart_id, amount: amount },
     });
   };
 
-  const deleteCart = (id, color) => {
-    dispatch({ type: DELETE_CART, payload: { id: id, color: color } });
+  const deleteCart = (cart_id) => {
+    dispatch({ type: DELETE_CART, payload: { cart_id: cart_id } });
+  };
+
+  const clearCart = () => {
+    dispatch({ type: CLEAR_CART });
   };
 
   useEffect(() => {
-    if (state.cart && state.cart.length > 0) {
-      dispatch({ type: UPDATE_TOTAL_ITEMS });
-      dispatch({ type: UPDATE_TOTAL_AMOUNT });
-    }
+    dispatch({ type: UPDATE_TOTAL_ITEMS });
+    dispatch({ type: UPDATE_TOTAL_AMOUNT });
+    localStorage.setItem("cart", JSON.stringify(state.cart));
   }, [state.cart]);
 
   return (
-    <CartContext.Provider value={{ ...state, addCart, updateCart, deleteCart }}>
+    <CartContext.Provider
+      value={{ ...state, addCart, updateAmountCart, deleteCart, clearCart }}
+    >
       {props.children}
     </CartContext.Provider>
   );

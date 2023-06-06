@@ -1,5 +1,8 @@
 export const ADD_CART = "ADD_CART";
 export const UPDATE_CART = "UPDATE_CART";
+export const DECREASE_AMOUNT = "DECREASE_AMOUNT";
+export const INCREASE_AMOUNT = "INCREASE_AMOUNT";
 export const DELETE_CART = "DELETE_CART";
+export const CLEAR_CART = "CLEAR_CART";
 export const UPDATE_TOTAL_ITEMS = "UPDATE_TOTAL_ITEMS";
 export const UPDATE_TOTAL_AMOUNT = "UPDATE_TOTAL_AMOUNT";

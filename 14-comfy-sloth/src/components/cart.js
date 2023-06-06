@@ -6,7 +6,7 @@ import { CartItem } from "./cartItem";
 import classes from "./cart.module.css";
 
 export const Cart = (props) => {
-  const { cart } = useCartContext();
+  const { cart, total_amount, shipping_fee, clearCart } = useCartContext();
 
   return (
     <section className={classes["cart_container"]}>
@@ -17,33 +17,46 @@ export const Cart = (props) => {
         <h5>Subtotal</h5>
       </div>
       <hr className={classes["line"]} />
-      {cart &&
-        cart.map((x) => <CartItem key={`${x.id}${x.color}`} cartItem={x} />)}
+      {cart.length === 0 && (
+        <h3 className={classes["empty"]}>Your cart is empty</h3>
+      )}
+      {cart.length > 0 &&
+        cart.map((x) => <CartItem key={x.cart_id} cartItem={x} />)}
       <div className={classes["shopping_action"]}>
         <Link to={"/products"} className={`btn ${classes["continue_btn"]}`}>
           Continue Shopping
         </Link>
-        <button className={`btn ${classes["clear_btn"]}`}>
-          Clear Shopping Cart
-        </button>
+        {cart.length > 0 && (
+          <button
+            className={`btn ${classes["clear_btn"]}`}
+            onClick={() => {
+              clearCart();
+            }}
+          >
+            Clear Shopping Cart
+          </button>
+        )}
       </div>
-      <div className={classes["bill_center"]}>
-        <div className={classes["bill_area"]}>
-          <div className={classes["bill"]}>
-            <h4>
-              subtotal: <span>{formatPrice(3099)}</span>
-            </h4>
-            <p>
-              shipping fee: <span>{formatPrice(3099)}</span>
-            </p>
-            <hr className={classes["line"]} />
-            <h3>
-              order total: <span>{formatPrice(3099)}</span>
-            </h3>
+      {cart.length > 0 && (
+        <div className={classes["bill_center"]}>
+          <div className={classes["bill_area"]}>
+            <div className={classes["bill"]}>
+              <h4>
+                subtotal: <span>{formatPrice(total_amount)}</span>
+              </h4>
+              <p>
+                shipping fee: <span>{formatPrice(shipping_fee)}</span>
+              </p>
+              <hr className={classes["line"]} />
+              <h3>
+                order total:{" "}
+                <span>{formatPrice(total_amount + shipping_fee)}</span>
+              </h3>
+            </div>
+            <button className={`btn ${classes["login_btn"]}`}>Login</button>
           </div>
-          <button className={`btn ${classes["login_btn"]}`}>Login</button>
         </div>
-      </div>
+      )}
     </section>
   );
 };

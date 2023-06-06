@@ -23,6 +23,12 @@
   color: #627e98;
 }
 
+.empty {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #627e98;
+}
+
 .shopping_action {
   display: flex;
   justify-content: space-between;
