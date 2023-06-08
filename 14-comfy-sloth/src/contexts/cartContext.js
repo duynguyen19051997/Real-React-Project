@@ -5,8 +5,7 @@ import {
   CLEAR_CART,
   DELETE_CART,
   UPDATE_CART,
-  UPDATE_TOTAL_AMOUNT,
-  UPDATE_TOTAL_ITEMS,
+  UPDATE_CART_TOTALS,
 } from "../actions/cartActions";
 
 const getLocalStorageCart = () => {
@@ -33,10 +32,10 @@ export const CartProvider = (props) => {
     dispatch({ type: ADD_CART, payload: { single_product: single_product } });
   };
 
-  const updateAmountCart = (cart_id, amount) => {
+  const updateAmountCart = (cart_id, type) => {
     dispatch({
       type: UPDATE_CART,
-      payload: { cart_id: cart_id, amount: amount },
+      payload: { cart_id: cart_id, type: type },
     });
   };
 
@@ -49,8 +48,7 @@ export const CartProvider = (props) => {
   };
 
   useEffect(() => {
-    dispatch({ type: UPDATE_TOTAL_ITEMS });
-    dispatch({ type: UPDATE_TOTAL_AMOUNT });
+    dispatch({ type: UPDATE_CART_TOTALS });
     localStorage.setItem("cart", JSON.stringify(state.cart));
   }, [state.cart]);
 

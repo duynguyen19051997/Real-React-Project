@@ -10,10 +10,12 @@ import { DECREASE_AMOUNT, INCREASE_AMOUNT } from "../actions/cartActions";
 export const CartItem = ({ cartItem }) => {
   const { deleteCart, updateAmountCart } = useCartContext();
   const incrementAmountHandle = (event) => {
+    event.preventDefault();
     updateAmountCart(cartItem.cart_id, INCREASE_AMOUNT);
   };
 
   const decreaseAmountHandle = (event) => {
+    event.preventDefault();
     updateAmountCart(cartItem.cart_id, DECREASE_AMOUNT);
   };
 
