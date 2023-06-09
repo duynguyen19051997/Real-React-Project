@@ -4,10 +4,11 @@ import { formatPrice } from "../utils/helpers";
 import { useCartContext } from "../contexts/cartContext";
 import { CartItem } from "./cartItem";
 import classes from "./cart.module.css";
+import { useUserContext } from "../contexts/userContext";
 
 export const Cart = (props) => {
   const { cart, total_amount, shipping_fee, clearCart } = useCartContext();
-
+  const { myUser, loginWithRedirect } = useUserContext();
   return (
     <section className={classes["cart_container"]}>
       <div className={classes["cart_title"]}>
@@ -53,7 +54,18 @@ export const Cart = (props) => {
                 <span>{formatPrice(total_amount + shipping_fee)}</span>
               </h3>
             </div>
-            <button className={`btn ${classes["login_btn"]}`}>Login</button>
+            {myUser ? (
+              <Link className={`btn ${classes["login_btn"]}`} to="/checkout">
+                Checkout
+              </Link>
+            ) : (
+              <button
+                className={`btn ${classes["login_btn"]}`}
+                onClick={loginWithRedirect}
+              >
+                Login
+              </button>
+            )}
           </div>
         </div>
       )}
