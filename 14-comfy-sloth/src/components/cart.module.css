@@ -100,6 +100,7 @@
   background-color: #ab7a5f;
   color: #ffff;
   margin-top: 1rem;
+  text-align: center;
 }
 
 @media screen and (width < 1500px) {

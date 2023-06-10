@@ -4,6 +4,8 @@ import { HomePage } from "./homePage";
 import { ProductDetailPage } from "./productDetailPage";
 import { ProductsPage } from "./productsPage";
 import { ErrorPage } from "./errorPage";
+import { CheckoutPage } from "./checkoutPage";
+import { AuthWrapper } from "./authWrapper";
 
 export {
   AboutPage,
@@ -12,4 +14,6 @@ export {
   ProductDetailPage,
   ProductsPage,
   ErrorPage,
+  CheckoutPage,
+  AuthWrapper,
 };
