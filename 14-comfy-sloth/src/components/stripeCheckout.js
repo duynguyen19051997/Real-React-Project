@@ -21,7 +21,7 @@ const CheckoutForm = () => {
   const { myUser } = useUserContext();
   const navigate = useNavigate();
 
-  const [isSucceed, setIsSucceed] = useState(true);
+  const [isSucceed, setIsSucceed] = useState(false);
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState("");
   const [disabled, setDisabled] = useState(true);
@@ -30,23 +30,75 @@ const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const createPaymentIntent = async () => {};
+  const createPaymentIntent = async () => {
+    try {
+      const { data } = await axios.post(
+        "/functions/create-payment-intent",
+        JSON.stringify({ cart, shipping_fee, total_amount })
+      );
+
+      setClientSecret(data.clientSecret);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
   useEffect(() => {
     createPaymentIntent();
     // eslint-disable-next-line
   }, []);
 
-  const handleChange = async (event) => {};
-  const handleSubmit = async (event) => {};
+  const handleChange = async (event) => {
+    setDisabled(event.empty);
+    setError(event.error ? event.error.message : "");
+  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setProcessing(true);
+
+    const payload = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: { card: elements.getElement(CardElement) },
+    });
+
+    if (payload.error) {
+      setError(`Payment failed: ${payload.error.message}`);
+      setProcessing(false);
+    } else {
+      setError(null);
+      setProcessing(false);
+      setIsSucceed(true);
+      clearCart();
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
+  };
 
   return (
     <div>
+      {isSucceed ? (
+        <article>
+          <h4>Thank you</h4>
+          <h4>Your payment was successful!</h4>
+          <h4>Redirecting to home page shortly</h4>
+        </article>
+      ) : (
+        <article>
+          <h4>Hello, {myUser ? myUser.name : ""}</h4>
+          <p>
+            Your total is{" "}
+            <strong>{formatPrice(total_amount + shipping_fee)}</strong>
+          </p>
+          <p>
+            Test Card Number: <strong>4242 4242 4242 4242</strong>
+          </p>
+        </article>
+      )}
       <form id="payment-form" onSubmit={handleSubmit}>
         <CardElement id="cart-element" onChange={handleChange} options={""} />
         <button
           disabled={processing || disabled || isSucceed}
           id="submit"
-          className={`${"btn"}`}
+          className={`btn ${classes["pay_btn"]}`}
         >
           Pay
         </button>

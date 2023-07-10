@@ -12,14 +12,13 @@ import { UserProvider } from "./contexts/userContext";
 
 // Domain: dev-fjremgeh6qaet2b4.us.auth0.com
 // ClientId: 8BbYicX1ax2JPafTwbyLh5f3O4lxvaH3
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <React.StrictMode>
       <Auth0Provider
         domain={process.env.REACT_APP_AUTH_DOMAIN}
-        clientId={process.env.REACT_APP_CLIENT_ID}
+        clientId={process.env.REACT_APP_AUTH_CLIENT_ID}
         authorizationParams={{
           redirect_uri: window.location.origin,
         }}
