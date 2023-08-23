@@ -1,5 +1,6 @@
 import React from "react";
+import { Landing } from "../components/Landing";
 
 export const LandingPage = () => {
-  return <h1>Landing Page</h1>;
+  return <Landing />;
 };

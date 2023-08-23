@@ -1,0 +1,16 @@
+:root {
+  /* BACK-GROUND COLORS */
+  --background-color-main: #f0f4f8;
+
+  /* COLOR */
+  --color-primary-500: #3b82f6;
+  --color-white: #fbfdff;
+  --color-grey-600: #486581;
+
+  /* LETTER SPACING */
+  --letter-spacing-18: 1.8px;
+  --letter-spacing-15: 1.5px;
+
+  /* LINE HEIGH */
+  --line-height-175: 1.75;
+}
