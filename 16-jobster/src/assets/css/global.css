@@ -1,4 +1,9 @@
 :root {
+  /* WIDTH */
+  --width-percent-80: 80%;
+  --width-percent-70: 70%;
+  --width-percent-60: 60%;
+
   /* BACK-GROUND COLORS */
   --background-color-main: #f0f4f8;
 
@@ -10,6 +15,10 @@
   /* LETTER SPACING */
   --letter-spacing-18: 1.8px;
   --letter-spacing-15: 1.5px;
+
+  /* MARGIN PADDING SIZE */
+  --size-rem-1: 1rem;
+  --size-rem-2: 2rem;
 
   /* LINE HEIGH */
   --line-height-175: 1.75;

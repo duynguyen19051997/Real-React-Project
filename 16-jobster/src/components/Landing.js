@@ -1,7 +1,7 @@
 import React from "react";
-import classes from "./Landing.module.css";
-import jobster from "../images/jobster.svg";
-import main from "../images/main.svg";
+import classes from "../assets/css/Landing.module.css";
+import jobster from "../assets/images/jobster.svg";
+import main from "../assets/images/main.svg";
 
 export const Landing = (props) => {
   return (

@@ -1,8 +1,8 @@
-@import "../global.css";
+@import "./global.css";
 
 .main_container {
-  width: 60%;
-  margin: 2rem auto;
+  width: var(--width-percent-60);
+  margin: var(--size-rem-2) auto;
 }
 
 .main_center {
@@ -23,7 +23,7 @@
 .main_contents h1 {
   text-transform: capitalize;
   letter-spacing: var(--letter-spacing-18);
-  margin: 1rem 0;
+  margin: var(--size-rem-1) 0;
 }
 
 .main_contents span {
@@ -34,7 +34,7 @@
   letter-spacing: var(--letter-spacing-15);
   line-height: var(--line-height-175);
   color: var(--color-grey-600);
-  margin: 1rem 0;
+  margin: var(--size-rem-1) 0;
 }
 
 .btn_login {
@@ -45,4 +45,27 @@
 
 .main_images {
   width: 100%;
+}
+
+@media screen and (width < 1500px) {
+  .main_container {
+    width: var(--width-percent-80);
+    margin: var(--size-rem-2) auto;
+  }
+}
+
+@media screen and (width < 1100px) {
+  .main_container {
+    width: var(--width-percent-70);
+    margin: var(--size-rem-2) auto;
+  }
+
+  .main_center {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main_contents {
+    margin-bottom: var(--size-rem-2);
+  }
 }
