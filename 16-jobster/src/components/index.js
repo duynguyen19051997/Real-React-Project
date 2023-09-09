@@ -1,6 +1,5 @@
-import { Landing } from "./Landing";
 import { Logo } from "./Logo";
-import { Error } from "./Error";
-import { Register } from "./Register";
+import { ErrorMessage } from "./ErrorMessage";
+import { FormRow } from "./FormRow";
 
-export { Landing, Logo, Error, Register };
+export { Logo, ErrorMessage, FormRow };

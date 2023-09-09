@@ -1,6 +1,6 @@
-import { LandingPage } from "./LandingPage";
-import { ErrorPage } from "./ErrorPage";
-import { RegisterPage } from "./RegisterPage";
-import { DashboardPage } from "./DashboardPage";
+import { Landing } from "./Landing";
+import { Error } from "./Error";
+import { Register } from "./Register";
+import { Dashboard } from "./Dashboard";
 
-export { LandingPage, ErrorPage, RegisterPage, DashboardPage };
+export { Landing, Error, Register, Dashboard };

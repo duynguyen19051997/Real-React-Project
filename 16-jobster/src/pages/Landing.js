@@ -2,7 +2,7 @@ import React from "react";
 import classes from "../assets/css/Landing.module.css";
 import main from "../assets/images/main.svg";
 import { Link } from "react-router-dom";
-import { Logo } from "./index";
+import { Logo } from "../components/index";
 
 export const Landing = (props) => {
   return (

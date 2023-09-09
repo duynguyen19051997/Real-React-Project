@@ -1,5 +1,5 @@
 import React from "react";
 
-export const DashboardPage = () => {
+export const Dashboard = () => {
   return <h1>Dashboard Page</h1>;
 };

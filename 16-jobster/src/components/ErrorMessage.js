@@ -3,7 +3,7 @@ import classes from "../assets/css/Error.module.css";
 import notfound from "../assets/images/notfound.svg";
 import { Link } from "react-router-dom";
 
-export const Error = (props) => {
+export const ErrorMessage = (props) => {
   return (
     <div className={classes["error_container"]}>
       <img src={notfound} alt="Not found" />
