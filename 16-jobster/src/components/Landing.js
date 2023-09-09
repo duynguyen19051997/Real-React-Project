@@ -1,13 +1,14 @@
 import React from "react";
 import classes from "../assets/css/Landing.module.css";
-import jobster from "../assets/images/jobster.svg";
 import main from "../assets/images/main.svg";
+import { Link } from "react-router-dom";
+import { Logo } from "./index";
 
 export const Landing = (props) => {
   return (
     <main className={classes["main_container"]}>
       <nav>
-        <img src={jobster} alt="job tracking app" />
+        <Logo />
       </nav>
       <div className={classes["main_center"]}>
         <div className={classes["main_contents"]}>
@@ -19,9 +20,9 @@ export const Landing = (props) => {
             fixie raclette taxidermy craft beer. Brunch bitters synth, VHS
             crucifix heirloom meggings bicycle rights.
           </p>
-          <button className={`btn ${classes["btn_login"]}`}>
+          <Link to="/register" className={`btn ${classes["btn_login"]}`}>
             Login/Register
-          </button>
+          </Link>
         </div>
         <div className={classes["main_images"]}>
           <img src={main} alt="main" />
