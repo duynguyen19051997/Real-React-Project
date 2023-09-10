@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import classes from "../assets/css/Register.module.css";
 import { FormRow, Logo } from "../components/index";
+import { toast } from "react-toastify";
 
 const initialValue = {
   name: "",
@@ -14,6 +15,10 @@ export const Register = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    const { name, email, password, isMember } = member;
+    if (!email || !password || (!name && !isMember)) {
+      toast.warning("Please fill out all fields!");
+    }
   };
 
   const changeHandle = (e) => {

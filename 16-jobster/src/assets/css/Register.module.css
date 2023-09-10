@@ -2,7 +2,7 @@
 
 .register_container {
   width: var(--width-percent-20);
-  margin: var(--size-rem-5) auto;
+  margin: var(--size-rem-7) auto;
   border-top: 8px solid var(--color-primary-500);
   padding: var(--size-rem-2);
   text-align: center;
