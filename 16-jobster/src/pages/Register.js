@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import classes from "../assets/css/Register.module.css";
 import { FormRow, Logo } from "../components/index";
 import { toast } from "react-toastify";
+import { useSelector, useDispatch } from "react-redux";
+import { loginUser, registerUser } from "../features/user/userSlice";
 
 const initialValue = {
   name: "",
@@ -12,13 +14,21 @@ const initialValue = {
 
 export const Register = (props) => {
   const [member, setMember] = useState(initialValue);
+  const dispatch = useDispatch();
+  const { isLoading, user } = useSelector((store) => store.user);
 
   const submitHandler = (e) => {
     e.preventDefault();
     const { name, email, password, isMember } = member;
     if (!email || !password || (!name && !isMember)) {
       toast.warning("Please fill out all fields!");
+      return;
     }
+    if (isMember) {
+      dispatch(loginUser({ email: email, password: password }));
+      return;
+    }
+    dispatch(registerUser({ name, email, password }));
   };
 
   const changeHandle = (e) => {
@@ -71,13 +81,13 @@ export const Register = (props) => {
           </button>
         </div>
         <div className={classes["content"]}>
-          <p>{member.isMember ? "Already a member?" : "Not a member yet?"}</p>
+          <p>{!member.isMember ? "Already a member?" : "Not a member yet?"}</p>
           <button
             type="reset"
             className={`btn ${classes["btn_change"]}`}
             onClick={toggleMember}
           >
-            {member.isMember ? "Login" : "Register"}
+            {!member.isMember ? "Login" : "Register"}
           </button>
         </div>
       </form>
