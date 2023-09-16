@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import classes from "../assets/css/Register.module.css";
 import { FormRow, Logo } from "../components/index";
-import { toast } from "react-toastify";
-import { useSelector, useDispatch } from "react-redux";
 import { loginUser, registerUser } from "../features/user/userSlice";
 
 const initialValue = {
@@ -16,6 +17,15 @@ export const Register = (props) => {
   const [member, setMember] = useState(initialValue);
   const dispatch = useDispatch();
   const { isLoading, user } = useSelector((store) => store.user);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
+    }
+  }, [user, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -73,8 +83,12 @@ export const Register = (props) => {
           onChangeHandle={changeHandle}
         />
         <div className={classes["form_control"]}>
-          <button type="submit" className={`btn ${classes["btn_submit"]}`}>
-            Submit
+          <button
+            type="submit"
+            className={`btn ${classes["btn_submit"]}`}
+            disabled={isLoading}
+          >
+            {isLoading ? "Please wait..." : "submit"}
           </button>
           <button type="submit" className={`btn ${classes["btn_demo"]}`}>
             Demo App

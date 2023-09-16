@@ -6,6 +6,7 @@ export const FormRow = ({ name, type, value, labelText, onChangeHandle }) => {
     <div className={classes["form_control"]}>
       <label htmlFor={name}>{labelText}</label>
       <input
+        id={name}
         type={type}
         name={name}
         defaultValue={value}

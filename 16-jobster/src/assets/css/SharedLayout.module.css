@@ -1,0 +1,13 @@
+@import "../../assets/css/global.css";
+
+.dashboard_container {
+  width: 100%;
+  display: flex;
+}
+
+.sidebar_container {
+}
+
+.content_container {
+  width: 100%;
+}
