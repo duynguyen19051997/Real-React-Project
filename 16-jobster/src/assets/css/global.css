@@ -6,6 +6,7 @@
   --width-percent-50: 50%;
   --width-percent-40: 40%;
   --width-percent-20: 20%;
+  --width-percent-10: 10%;
 
   /* BACK-GROUND COLORS */
   --background-color-main: #f0f4f8;
@@ -49,6 +50,7 @@
   --size-rem-0-7-5: 0.75rem;
   --size-rem-1: 1rem;
   --size-rem-2: 2rem;
+  --size-rem-3: 3rem;
   --size-rem-5: 5rem;
   --size-rem-7: 7rem;
 
