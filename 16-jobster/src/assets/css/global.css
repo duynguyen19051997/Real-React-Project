@@ -5,8 +5,12 @@
   --width-percent-60: 60%;
   --width-percent-50: 50%;
   --width-percent-40: 40%;
+  --width-percent-32: 32%;
+  --width-percent-30: 30%;
   --width-percent-20: 20%;
   --width-percent-10: 10%;
+  --width-percent-5: 5%;
+  --width-percent-2: 2%;
 
   /* BACK-GROUND COLORS */
   --background-color-main: #f0f4f8;

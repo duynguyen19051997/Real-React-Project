@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleSidebar } from "../../features/user/userSlice";
 
 import classes from "../../assets/css/SharedLayout.module.css";
 import {
@@ -10,14 +12,17 @@ import {
 } from "../../components/index";
 
 export const SharedLayout = (props) => {
-  const [isShowSideBar, setIsShowSideBar] = useState(true);
+  const { isShowSidebar } = useSelector((store) => store.user);
+  const dispatch = useDispatch();
   const [size, setSize] = useState(0);
 
   useEffect(() => {
     const resizeHandle = () => {
       setSize(window.innerWidth);
     };
+
     window.addEventListener("resize", resizeHandle);
+
     return (_) => {
       window.removeEventListener("resize", resizeHandle);
     };
@@ -25,22 +30,24 @@ export const SharedLayout = (props) => {
 
   return (
     <main className={classes["dashboard_container"]}>
-      {isShowSideBar && (
+      {isShowSidebar && (
         <div className={classes["sidebar_container"]}>
           <BigSidebar />
-          {size <= 1100 && (
+          {size <= 1100 && size > 0 && (
             <Modal
-              isShow={isShowSideBar}
-              onClose={() => setIsShowSideBar(!isShowSideBar)}
+              isShow={isShowSidebar}
+              onClose={() => dispatch(toggleSidebar())}
             >
-              <SmallSidebar onClose={() => setIsShowSideBar(!isShowSideBar)} />
+              <SmallSidebar onClose={() => dispatch(toggleSidebar())} />
             </Modal>
           )}
         </div>
       )}
       <div className={classes["content_container"]}>
-        <Navbar onShowSidebar={() => setIsShowSideBar(!isShowSideBar)} />
-        <Outlet />
+        <Navbar onShowSidebar={() => dispatch(toggleSidebar())} />
+        <div className={classes["content"]}>
+          <Outlet />
+        </div>
       </div>
     </main>
   );

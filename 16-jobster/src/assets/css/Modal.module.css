@@ -16,7 +16,7 @@
 
 .modal_main {
   position: fixed;
-  background: white;
+  background: var(--color-white);
   width: 80%;
   min-height: 2rem;
   top: 50%;
@@ -33,4 +33,6 @@
   float: right;
   margin-top: var(--size-rem-0-5);
   margin-right: var(--size-rem-0-5);
+  background-color: var(--color-primary-500);
+  color: var(--color-white);
 }

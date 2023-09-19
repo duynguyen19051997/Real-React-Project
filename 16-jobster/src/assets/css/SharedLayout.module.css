@@ -8,3 +8,8 @@
 .content_container {
   width: 100%;
 }
+
+.content {
+  width: 95%;
+  margin: var(--size-rem-2) auto;
+}
