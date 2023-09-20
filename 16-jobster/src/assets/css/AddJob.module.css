@@ -1,6 +1,6 @@
 @import "./global.css";
 
-.profile_container {
+.add_job_container {
   width: 100%;
 
   background-color: var(--color-white);
@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-.profile_container h2 {
+.add_job_container h2 {
   width: var(--width-percent-95);
   margin: 0 auto;
   text-transform: capitalize;
@@ -34,10 +34,18 @@
   justify-content: center;
 }
 
-.btn_save_changes {
+.btn_submit {
   margin-top: 2.4rem;
   margin-bottom: var(--size-rem-0-5);
   background-color: var(--color-primary-500);
+  color: var(--color-white);
+}
+
+.btn_clear {
+  margin-top: 2.4rem;
+  margin-left: var(--size-rem-1);
+  margin-bottom: var(--size-rem-0-5);
+  background-color: var(--color-grey-500);
   color: var(--color-white);
 }
 
@@ -47,7 +55,11 @@
     gap: 0 var(--width-percent-5);
   }
 
-  .btn_save_changes {
+  .btn_submit {
+    margin-top: var(--size-rem-1);
+  }
+
+  .btn_clear {
     margin-top: var(--size-rem-1);
   }
 }
