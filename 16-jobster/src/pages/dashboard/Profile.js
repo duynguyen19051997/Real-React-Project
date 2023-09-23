@@ -4,7 +4,7 @@ import classes from "../../assets/css/Profile.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { updateUser } from "../../features/user/userSlice";
-import { Loading } from "../../components/Loading";
+import { Loading } from "../../components/index";
 
 export const Profile = (props) => {
   const { isLoading, user } = useSelector((store) => store.user);

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import classes from "../assets/css/Register.module.css";
-import { FormRow, Logo } from "../components/index";
+import { FormRow, Loading, Logo } from "../components/index";
 import { loginUser, registerUser } from "../features/user/userSlice";
 
 const initialValue = {
@@ -82,28 +82,35 @@ export const Register = (props) => {
           value={member.password}
           onChangeHandle={changeHandle}
         />
-        <div className={classes["form_control"]}>
-          <button
-            type="submit"
-            className={`btn ${classes["btn_submit"]}`}
-            disabled={isLoading}
-          >
-            {isLoading ? "Please wait..." : "submit"}
-          </button>
-          <button type="submit" className={`btn ${classes["btn_demo"]}`}>
-            Demo App
-          </button>
-        </div>
-        <div className={classes["content"]}>
-          <p>{!member.isMember ? "Already a member?" : "Not a member yet?"}</p>
-          <button
-            type="reset"
-            className={`btn ${classes["btn_change"]}`}
-            onClick={toggleMember}
-          >
-            {!member.isMember ? "Login" : "Register"}
-          </button>
-        </div>
+        {!isLoading && (
+          <div className={classes["form_control"]}>
+            <button
+              type="submit"
+              className={`btn ${classes["btn_submit"]}`}
+              disabled={isLoading}
+            >
+              {isLoading ? "Please wait..." : "submit"}
+            </button>
+            <button type="submit" className={`btn ${classes["btn_demo"]}`}>
+              Demo App
+            </button>
+          </div>
+        )}
+        {!isLoading && (
+          <div className={classes["content"]}>
+            <p>
+              {!member.isMember ? "Already a member?" : "Not a member yet?"}
+            </p>
+            <button
+              type="reset"
+              className={`btn ${classes["btn_change"]}`}
+              onClick={toggleMember}
+            >
+              {!member.isMember ? "Login" : "Register"}
+            </button>
+          </div>
+        )}
+        {isLoading && <Loading />}
       </form>
     </div>
   );

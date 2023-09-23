@@ -6,6 +6,7 @@ import { SmallSidebar } from "./SmallSidebar";
 import { BigSidebar } from "./BigSidebar";
 import { Modal } from "./Modal";
 import { SidebarMenu } from "./SidebarMenu";
+import { Loading } from "./Loading";
 
 export {
   Logo,
@@ -16,4 +17,5 @@ export {
   BigSidebar,
   Modal,
   SidebarMenu,
+  Loading,
 };
