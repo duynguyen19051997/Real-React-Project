@@ -7,6 +7,7 @@ import { BigSidebar } from "./BigSidebar";
 import { Modal } from "./Modal";
 import { SidebarMenu } from "./SidebarMenu";
 import { Loading } from "./Loading";
+import { FormRowSelect } from "./FormRowSelect";
 
 export {
   Logo,
@@ -18,4 +19,5 @@ export {
   Modal,
   SidebarMenu,
   Loading,
+  FormRowSelect,
 };
