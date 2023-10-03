@@ -4,7 +4,11 @@ import classes from "../../assets/css/AddJob.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Loading } from "../../components/index";
 import { toast } from "react-toastify";
-import { changeHandle, clearValue } from "../../features/job/jobSlice";
+import {
+  createJob,
+  changeHandle,
+  clearValues,
+} from "../../features/job/jobSlice";
 
 export const AddJob = (props) => {
   const {
@@ -28,6 +32,7 @@ export const AddJob = (props) => {
       toast.warning("Please, fill out all the fields");
       return;
     }
+    dispatch(createJob({ company, position, jobLocation, jobType, status }));
   };
 
   const handleJobInput = (e) => {
@@ -84,7 +89,7 @@ export const AddJob = (props) => {
               className={`btn ${classes["btn_clear"]}`}
               type="reset"
               onClick={() => {
-                dispatch(clearValue());
+                dispatch(clearValues());
               }}
             >
               clear
