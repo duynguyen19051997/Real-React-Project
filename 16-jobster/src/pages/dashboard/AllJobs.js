@@ -1,5 +1,10 @@
 import React from "react";
+import { AllJobsContainer } from "../../components/index";
 
 export const AllJobs = (props) => {
-  return <h1>All Jobs</h1>;
+  return (
+    <React.Fragment>
+      <AllJobsContainer />
+    </React.Fragment>
+  );
 };

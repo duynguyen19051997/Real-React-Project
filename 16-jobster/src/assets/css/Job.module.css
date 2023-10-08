@@ -1,0 +1,42 @@
+@import "./global.css";
+
+.job_container {
+  width: 100%;
+  margin: var(--size-rem-1) auto;
+  background-color: var(--color-white);
+  padding: var(--size-rem-1) var(--size-rem-0-5);
+}
+
+.job_title {
+  width: var(--width-percent-95);
+  margin: 0 auto;
+}
+
+.job_title h3 {
+  text-transform: capitalize;
+  letter-spacing: var(--letter-spacing-18);
+  font-weight: var(--font-weight-500);
+  color: var(--color-grey-800);
+}
+
+.job_title p {
+  letter-spacing: var(--letter-spacing-15);
+  font-weight: var(--font-weight-500);
+  color: var(--color-grey-800);
+}
+
+.job_detail {
+  width: var(--width-percent-95);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: var(--width-percent-50) var(--width-percent-50);
+}
+
+.job_actions {
+}
+
+.edit_btn {
+}
+
+.remove_btn {
+}

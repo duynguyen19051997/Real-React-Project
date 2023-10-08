@@ -30,7 +30,7 @@ export const Navbar = ({ onShowSidebar }) => {
           <button
             className="btn"
             onClick={() => {
-              dispatch(logoutUser());
+              dispatch(logoutUser("Logging out..."));
               setIsShowLogout(!isShowLogout);
             }}
           >

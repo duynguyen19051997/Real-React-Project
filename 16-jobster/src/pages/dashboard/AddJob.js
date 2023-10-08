@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FormRow, FormRowSelect } from "../../components/index";
 import classes from "../../assets/css/AddJob.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,6 +9,7 @@ import {
   changeHandle,
   clearValues,
 } from "../../features/job/jobSlice";
+import { getUserFromLocalStorage } from "../../utils/localStorage";
 
 export const AddJob = (props) => {
   const {
@@ -40,6 +41,14 @@ export const AddJob = (props) => {
     const value = e.target.value;
     dispatch(changeHandle({ name, value }));
   };
+
+  useEffect(() => {
+    if (!isEditing) {
+      dispatch(
+        changeHandle({ name: "jobLocation", value: getUserFromLocalStorage() })
+      );
+    }
+  }, [isEditing, dispatch]);
 
   return (
     <section className={classes["add_job_container"]}>
