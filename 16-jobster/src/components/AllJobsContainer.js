@@ -7,7 +7,12 @@ export const AllJobsContainer = () => {
   return (
     <section className={classes["all_jobs_container"]}>
       <Search />
-      <Job />
+      <div className={classes["all_jobs_center"]}>
+        <Job />
+        <Job />
+        <Job />
+        <Job />
+      </div>
     </section>
   );
 };
