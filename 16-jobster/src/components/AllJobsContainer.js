@@ -13,6 +13,7 @@ export const AllJobsContainer = () => {
         <Job />
         <Job />
       </div>
+      <div className={classes["all_jobs_paging"]}></div>
     </section>
   );
 };
