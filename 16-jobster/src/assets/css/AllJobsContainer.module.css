@@ -4,6 +4,28 @@
   width: 100%;
 }
 
+.all_jobs_container h4 {
+  margin-top: var(--size-rem-2);
+  text-transform: capitalize;
+  letter-spacing: var(--letter-spacing-18);
+  font-weight: var(--font-weight-500);
+  color: var(--color-grey-800);
+  text-align: center;
+}
+
+.loading_container {
+  margin-top: var(--size-rem-2);
+}
+
+.all_jobs_number h3 {
+  text-align: left;
+  margin-top: var(--size-rem-2);
+  margin-left: var(--size-rem-1);
+  text-transform: capitalize;
+  letter-spacing: var(--letter-spacing-18);
+  color: var(--color-grey-800);
+}
+
 .all_jobs_center {
   width: 100%;
   margin: var(--size-rem-2) auto;

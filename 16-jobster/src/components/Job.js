@@ -4,35 +4,51 @@ import { ImCompass } from "react-icons/im";
 import { BsCalendar3 } from "react-icons/bs";
 import { IoBagCheckOutline } from "react-icons/io5";
 
-export const Job = () => {
+export const Job = ({
+  _id,
+  company,
+  position,
+  status,
+  jobType,
+  jobLocation,
+  createdAt,
+}) => {
   return (
     <article className={classes["job_container"]}>
       <div className={classes["job_title"]}>
         <div className={classes["job_title_icon"]}>
-          <span>M</span>
+          <span style={{ textTransform: "capitalize" }}>
+            {company.charAt(0)}
+          </span>
         </div>
         <div className={classes["job_title_info"]}>
-          <h3>Civil Engineer</h3>
-          <p>Bechtelar-Bednar</p>
+          <h3>{position}</h3>
+          <p>{company}</p>
         </div>
       </div>
       <div className={classes["job_detail"]}>
         <div className={classes["job_detail_attr"]}>
           <ImCompass className={classes["icon"]} />
-          <p>Kiamba</p>
+          <p>{position}</p>
         </div>
         <div className={classes["job_detail_attr"]}>
           <BsCalendar3 className={classes["icon"]} />
-          <p>Dec 27th, 2021</p>
+          <p>
+            {new Date(createdAt).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })}
+          </p>
         </div>
         <div className={classes["job_detail_attr"]}>
           <IoBagCheckOutline className={classes["icon"]} />
-          <p>internship</p>
+          <p>{jobType}</p>
         </div>
         <div
-          className={`${classes["job_detail_attr_status"]} ${classes["declined"]}`}
+          className={`${classes["job_detail_attr_status"]} ${classes[status]}`}
         >
-          <p>Kiamba</p>
+          <p>{status}</p>
         </div>
       </div>
       <div className={classes["job_actions"]}>

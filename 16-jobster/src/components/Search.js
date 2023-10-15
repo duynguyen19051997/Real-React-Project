@@ -2,9 +2,30 @@ import React from "react";
 import classes from "../assets/css/Search.module.css";
 import { FormRow } from "./FormRow";
 import { FormRowSelect } from "./FormRowSelect";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  changeFilterHandle,
+  getAllJobs,
+} from "../features/allJobs/allJobsSlice";
 
 export const Search = () => {
-  const changeHandle = (e) => {};
+  const {
+    search,
+    searchStatus,
+    searchStatusOptions,
+    searchType,
+    searchTypeOptions,
+    sort,
+    sortOptions,
+  } = useSelector((store) => store.allJobs);
+  const dispatch = useDispatch();
+
+  const changeHandle = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    dispatch(changeFilterHandle({ name, value }));
+    dispatch(getAllJobs());
+  };
   return (
     <section className={classes["search_container"]}>
       <h2>Search</h2>
@@ -13,27 +34,27 @@ export const Search = () => {
           name="search"
           type="text"
           labelText="search"
-          value=""
+          value={search}
           onChangeHandle={changeHandle}
         />
         <FormRowSelect
           name="status"
-          options=""
-          selectedValue=""
+          options={searchStatusOptions}
+          selectedValue={searchStatus}
           labelText="status"
           onChangeHandle={changeHandle}
         />
         <FormRowSelect
           name="type"
-          options=""
-          selectedValue=""
+          options={searchTypeOptions}
+          selectedValue={searchType}
           labelText="type"
           onChangeHandle={changeHandle}
         />
         <FormRowSelect
           name="sort"
-          options=""
-          selectedValue=""
+          options={sortOptions}
+          selectedValue={sort}
           labelText="sort"
           onChangeHandle={changeHandle}
         />
