@@ -28,7 +28,7 @@ export const updateJob = () => {
 };
 
 export const removeJob = createAsyncThunk(
-  "job/deleteJob",
+  "job/removeJob",
   async (jobId, thunkAPI) => {
     const url = "/jobs/" + jobId;
     return removeJobThunk(url, thunkAPI);
@@ -66,9 +66,9 @@ const jobSlice = createSlice({
     [removeJob.pending]: (state) => {},
     [removeJob.fulfilled]: (state, { payload }) => {
       if (payload) {
-        toast.success("Delete job successfully");
+        toast.success("Remove job successfully");
       } else {
-        toast.error("Delete job failure");
+        toast.error("Remove job failure");
       }
     },
     [removeJob.rejected]: (state, { payload }) => {
