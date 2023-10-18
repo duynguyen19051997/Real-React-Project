@@ -2,7 +2,8 @@
 
 .big_aside_container {
   display: block;
-  height: 150vh;
+  min-height: 110vh;
+  max-height: 150vh;
   background-color: var(--color-white);
   /* padding: var(--size-rem-1); */
   box-shadow: var(--shadow-2);

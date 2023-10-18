@@ -4,6 +4,10 @@ import { ImCompass } from "react-icons/im";
 import { BsCalendar3 } from "react-icons/bs";
 import { IoBagCheckOutline } from "react-icons/io5";
 import moment from "moment";
+import { useDispatch, useSelector } from "react-redux";
+import { removeJob } from "../features/job/jobSlice";
+import { Confirm } from "./index";
+import { closeModal, openModal } from "../features/modal/modalSlice";
 
 export const Job = ({
   _id,
@@ -15,6 +19,12 @@ export const Job = ({
   createdAt,
 }) => {
   const createdAtDate = moment(createdAt).format("MMM Do YY");
+  const dispatch = useDispatch();
+  const { isOpen } = useSelector((store) => store.modal);
+
+  const removeHandle = (e) => {
+    dispatch(openModal());
+  };
 
   return (
     <article className={classes["job_container"]}>
@@ -48,7 +58,23 @@ export const Job = ({
       </div>
       <div className={classes["job_actions"]}>
         <button className={`btn ${classes["edit_btn"]}`}>Edit</button>
-        <button className={`btn ${classes["remove_btn"]}`}>Remove</button>
+        <button
+          className={`btn ${classes["remove_btn"]}`}
+          onClick={removeHandle}
+        >
+          Remove
+        </button>
+        <Confirm
+          isShow={isOpen}
+          onClose={() => {
+            dispatch(closeModal());
+          }}
+          onConfirm={() => {
+            dispatch(removeJob(_id));
+            dispatch(closeModal());
+          }}
+          message="Do you want to remove this job?"
+        />
       </div>
     </article>
   );

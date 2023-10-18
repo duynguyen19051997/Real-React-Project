@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleSidebar } from "../../features/user/userSlice";
 
@@ -10,11 +10,19 @@ import {
   Navbar,
   SmallSidebar,
 } from "../../components/index";
+import { getUserFromLocalStorage } from "../../utils/localStorage";
 
 export const SharedLayout = (props) => {
   const { isShowSidebar } = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const [size, setSize] = useState(0);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!getUserFromLocalStorage()) {
+      navigate("/register");
+    }
+  }, [navigate]);
 
   useEffect(() => {
     const resizeHandle = () => {

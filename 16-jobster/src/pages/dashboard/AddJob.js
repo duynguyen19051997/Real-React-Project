@@ -45,7 +45,10 @@ export const AddJob = (props) => {
   useEffect(() => {
     if (!isEditing) {
       dispatch(
-        changeHandle({ name: "jobLocation", value: getUserFromLocalStorage() })
+        changeHandle({
+          name: "jobLocation",
+          value: getUserFromLocalStorage().jobLocation,
+        })
       );
     }
   }, [isEditing, dispatch]);

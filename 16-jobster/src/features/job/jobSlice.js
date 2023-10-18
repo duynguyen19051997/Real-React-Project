@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getUserFromLocalStorage } from "../../utils/localStorage";
 import { toast } from "react-toastify";
-import { createJobThunk } from "./jobThunk";
+import { createJobThunk, removeJobThunk } from "./jobThunk";
 
 const initialJob = {
   isLoading: false,
@@ -9,7 +9,7 @@ const initialJob = {
   position: "",
   jobLocation: getUserFromLocalStorage()?.location || "",
   jobTypeOptions: ["full-time", "part-time", "remote", "internship"],
-  jobType: "fulltime",
+  jobType: "full-time",
   statusOptions: ["interview", "declined", "pending"],
   status: "pending",
   isEditing: false,
@@ -27,9 +27,13 @@ export const updateJob = () => {
   // TODO
 };
 
-export const removeJob = () => {
-  // TODO
-};
+export const removeJob = createAsyncThunk(
+  "job/deleteJob",
+  async (jobId, thunkAPI) => {
+    const url = "/jobs/" + jobId;
+    return removeJobThunk(url, thunkAPI);
+  }
+);
 
 const jobSlice = createSlice({
   name: "job",
@@ -57,6 +61,17 @@ const jobSlice = createSlice({
     },
     [createJob.rejected]: (state, { payload }) => {
       state.isLoading = false;
+      toast.error(payload);
+    },
+    [removeJob.pending]: (state) => {},
+    [removeJob.fulfilled]: (state, { payload }) => {
+      if (payload) {
+        toast.success("Delete job successfully");
+      } else {
+        toast.error("Delete job failure");
+      }
+    },
+    [removeJob.rejected]: (state, { payload }) => {
       toast.error(payload);
     },
   },

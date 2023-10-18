@@ -11,6 +11,7 @@ import { FormRowSelect } from "./FormRowSelect";
 import { Search } from "./Search";
 import { AllJobsContainer } from "./AllJobsContainer";
 import { Job } from "./Job";
+import { Confirm } from "./Confirm";
 
 export {
   Logo,
@@ -26,4 +27,5 @@ export {
   Search,
   AllJobsContainer,
   Job,
+  Confirm,
 };
