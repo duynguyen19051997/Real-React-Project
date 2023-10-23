@@ -8,8 +8,10 @@ import {
   createJob,
   changeHandle,
   clearValues,
+  updateJob,
 } from "../../features/job/jobSlice";
 import { getUserFromLocalStorage } from "../../utils/localStorage";
+import { useNavigate } from "react-router-dom";
 
 export const AddJob = (props) => {
   const {
@@ -25,6 +27,7 @@ export const AddJob = (props) => {
     editJobId,
   } = useSelector((store) => store.job);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -33,7 +36,22 @@ export const AddJob = (props) => {
       toast.warning("Please, fill out all the fields");
       return;
     }
-    dispatch(createJob({ company, position, jobLocation, jobType, status }));
+
+    if (isEditing) {
+      dispatch(
+        updateJob({
+          company,
+          position,
+          jobLocation,
+          jobType,
+          status,
+          editJobId,
+        })
+      );
+    } else {
+      dispatch(createJob({ company, position, jobLocation, jobType, status }));
+    }
+    navigate("/all-jobs");
   };
 
   const handleJobInput = (e) => {

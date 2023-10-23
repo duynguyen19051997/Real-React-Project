@@ -5,9 +5,10 @@ import { BsCalendar3 } from "react-icons/bs";
 import { IoBagCheckOutline } from "react-icons/io5";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
-import { removeJob } from "../features/job/jobSlice";
+import { removeJob, setEditJob } from "../features/job/jobSlice";
 import { Confirm } from "./index";
 import { closeModal, openModal } from "../features/modal/modalSlice";
+import { Link } from "react-router-dom";
 
 export const Job = ({
   _id,
@@ -57,7 +58,24 @@ export const Job = ({
         </div>
       </div>
       <div className={classes["job_actions"]}>
-        <button className={`btn ${classes["edit_btn"]}`}>Edit</button>
+        <Link
+          to={`/add-job`}
+          className={`btn ${classes["edit_btn"]}`}
+          onClick={() => {
+            dispatch(
+              setEditJob({
+                company,
+                position,
+                status,
+                jobType,
+                jobLocation,
+                editJobId: _id,
+              })
+            );
+          }}
+        >
+          Edit
+        </Link>
         <button
           className={`btn ${classes["remove_btn"]}`}
           onClick={removeHandle}
