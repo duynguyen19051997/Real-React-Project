@@ -4,7 +4,7 @@ import classes from "../assets/css/AllJobsContainer.module.css";
 import { Job } from "./Job";
 import { useSelector, useDispatch } from "react-redux";
 import { Loading } from "./index";
-import { getAllJobs, showStats } from "../features/allJobs/allJobsSlice";
+import { getAllJobs } from "../features/allJobs/allJobsSlice";
 
 export const AllJobsContainer = () => {
   const { jobs, isLoading } = useSelector((store) => store.allJobs);
@@ -12,7 +12,6 @@ export const AllJobsContainer = () => {
 
   useEffect(() => {
     dispatch(getAllJobs());
-    dispatch(showStats());
   }, [dispatch]);
 
   return (

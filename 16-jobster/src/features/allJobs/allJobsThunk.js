@@ -13,7 +13,7 @@ export const getAllJobsThunk = async (url, thunkAPI) => {
 export const showStatsThunk = async (url, thunkAPI) => {
   try {
     const resp = await customFetch.get(url, authHeader(thunkAPI));
-    console.log(resp.data);
+    //console.log(resp.data);
     return resp.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response.data.msg);
