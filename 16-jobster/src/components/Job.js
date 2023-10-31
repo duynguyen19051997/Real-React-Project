@@ -93,6 +93,7 @@ export const Job = ({
           }}
           message="Do you want to remove this job?"
         />
+        {/* TODO: Edit popup */}
       </div>
     </article>
   );

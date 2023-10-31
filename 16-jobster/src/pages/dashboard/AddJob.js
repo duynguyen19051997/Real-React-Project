@@ -11,7 +11,7 @@ import {
   updateJob,
 } from "../../features/job/jobSlice";
 import { getUserFromLocalStorage } from "../../utils/localStorage";
-import { useNavigate } from "react-router-dom";
+import { showStats } from "../../features/allJobs/allJobsSlice";
 
 export const AddJob = (props) => {
   const {
@@ -27,7 +27,6 @@ export const AddJob = (props) => {
     editJobId,
   } = useSelector((store) => store.job);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -51,7 +50,6 @@ export const AddJob = (props) => {
     } else {
       dispatch(createJob({ company, position, jobLocation, jobType, status }));
     }
-    navigate("/all-jobs");
   };
 
   const handleJobInput = (e) => {

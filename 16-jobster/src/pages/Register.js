@@ -91,7 +91,16 @@ export const Register = (props) => {
             >
               {isLoading ? "Please wait..." : "submit"}
             </button>
-            <button type="submit" className={`btn ${classes["btn_demo"]}`}>
+            <button
+              type="submit"
+              className={`btn ${classes["btn_demo"]}`}
+              disabled={isLoading}
+              onClick={() => {
+                dispatch(
+                  loginUser({ email: "testUser@test.com", password: "secret" })
+                );
+              }}
+            >
               Demo App
             </button>
           </div>
