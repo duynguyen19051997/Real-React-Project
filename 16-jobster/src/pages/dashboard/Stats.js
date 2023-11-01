@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { showStats } from "../../features/allJobs/allJobsSlice";
+import { ChartsContainer, StatsContainer } from "../../components/index";
 
 export const Stats = (props) => {
   const dispatch = useDispatch();
@@ -9,5 +10,10 @@ export const Stats = (props) => {
     dispatch(showStats());
   }, [dispatch]);
 
-  return <h1>Stats</h1>;
+  return (
+    <>
+      <StatsContainer />
+      <ChartsContainer />
+    </>
+  );
 };

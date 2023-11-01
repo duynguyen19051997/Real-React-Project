@@ -12,6 +12,9 @@ import { Search } from "./Search";
 import { AllJobsContainer } from "./AllJobsContainer";
 import { Job } from "./Job";
 import { Confirm } from "./Confirm";
+import { StatsContainer } from "./StatsContainer";
+import { StatItem } from "./StatItem";
+import { ChartsContainer } from "./ChartsContainer";
 
 export {
   Logo,
@@ -28,4 +31,7 @@ export {
   AllJobsContainer,
   Job,
   Confirm,
+  StatsContainer,
+  StatItem,
+  ChartsContainer,
 };
