@@ -71,6 +71,6 @@
   margin: var(--size-rem-0-5) 0px 0px;
   text-transform: capitalize;
   text-align: left;
-  font-weight: var(--font-weight-700);
+  font-weight: var(--font-weight-600);
   color: var(--color-grey-800);
 }
