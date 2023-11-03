@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AreaCharts, BarChart } from "./index";
+import { AreaChart, BarChart } from "./index";
 import { useSelector } from "react-redux";
 
 import classes from "../assets/css/ChartsContainer.module.css";
@@ -15,10 +15,10 @@ export const ChartsContainer = () => {
         className={`btn ${classes["btn_change_chart"]}`}
         onClick={() => setIsAreaChart(!isAreaChart)}
       >
-        {isAreaChart ? "Bar Chart" : "Area Chart"}
+        Change to {isAreaChart ? "Bar Chart" : "Area Chart"}
       </button>
-      {isAreaChart && <AreaCharts data={monthlyApplications} />}
-      {!isAreaChart && <BarChart />}
+      {isAreaChart && <AreaChart monthlyApplications={monthlyApplications} />}
+      {!isAreaChart && <BarChart monthlyApplications={monthlyApplications} />}
     </section>
   );
 };

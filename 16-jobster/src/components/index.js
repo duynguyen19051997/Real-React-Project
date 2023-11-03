@@ -15,8 +15,8 @@ import { Confirm } from "./Confirm";
 import { StatsContainer } from "./StatsContainer";
 import { StatItem } from "./StatItem";
 import { ChartsContainer } from "./ChartsContainer";
-import { AreaCharts } from "./AreaCharts";
-import { BarChart } from "./BarCharts";
+import { AreaChart } from "./AreaChart";
+import { BarChart } from "./BarChart";
 
 export {
   Logo,
@@ -36,6 +36,6 @@ export {
   StatsContainer,
   StatItem,
   ChartsContainer,
-  AreaCharts,
+  AreaChart,
   BarChart,
 };
