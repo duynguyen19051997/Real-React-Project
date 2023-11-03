@@ -9,15 +9,11 @@ import {
 } from "../features/allJobs/allJobsSlice";
 
 export const Search = () => {
-  const {
-    search,
-    searchStatus,
-    searchStatusOptions,
-    searchType,
-    searchTypeOptions,
-    sort,
-    sortOptions,
-  } = useSelector((store) => store.allJobs);
+  const { isLoading, search, searchStatus, searchType, sort, sortOptions } =
+    useSelector((store) => store.allJobs);
+
+  const { jobTypeOptions, statusOptions } = useSelector((store) => store.job);
+
   const dispatch = useDispatch();
 
   const changeHandle = (e) => {
@@ -26,10 +22,15 @@ export const Search = () => {
     dispatch(changeFilterHandle({ name, value }));
     dispatch(getAllJobs());
   };
+
+  const submitHandle = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <section className={classes["search_container"]}>
       <h2>Search</h2>
-      <form className={classes["form_container"]} onSubmit={() => {}}>
+      <form className={classes["form_container"]} onSubmit={submitHandle}>
         <FormRow
           name="search"
           type="text"
@@ -39,14 +40,14 @@ export const Search = () => {
         />
         <FormRowSelect
           name="status"
-          options={searchStatusOptions}
+          options={statusOptions}
           selectedValue={searchStatus}
           labelText="status"
           onChangeHandle={changeHandle}
         />
         <FormRowSelect
           name="type"
-          options={searchTypeOptions}
+          options={jobTypeOptions}
           selectedValue={searchType}
           labelText="type"
           onChangeHandle={changeHandle}
@@ -63,6 +64,7 @@ export const Search = () => {
             className={`btn ${classes["btn_clear"]}`}
             type="reset"
             onClick={() => {}}
+            disabled={isLoading}
           >
             clear filters
           </button>

@@ -22,8 +22,8 @@ export const AllJobsContainer = () => {
           <Loading />
         </div>
       )}
-      {jobs.length === 0 && <h4>No jobs to display</h4>}
-      {jobs.length > 0 && (
+      {!isLoading && jobs.length === 0 && <h4>No jobs to display</h4>}
+      {!isLoading && jobs.length > 0 && (
         <>
           <div className={classes["all_jobs_number"]}>
             <h3>{jobs.length} jobs found</h3>
