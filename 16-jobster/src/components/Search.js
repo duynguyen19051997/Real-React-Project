@@ -5,6 +5,7 @@ import { FormRowSelect } from "./FormRowSelect";
 import { useSelector, useDispatch } from "react-redux";
 import {
   changeFilterHandle,
+  clearFilters,
   getAllJobs,
 } from "../features/allJobs/allJobsSlice";
 
@@ -25,6 +26,10 @@ export const Search = () => {
 
   const submitHandle = (e) => {
     e.preventDefault();
+  };
+
+  const clearHandle = (e) => {
+    dispatch(clearFilters());
   };
 
   return (
@@ -63,7 +68,7 @@ export const Search = () => {
           <button
             className={`btn ${classes["btn_clear"]}`}
             type="reset"
-            onClick={() => {}}
+            onClick={clearHandle}
             disabled={isLoading}
           >
             clear filters

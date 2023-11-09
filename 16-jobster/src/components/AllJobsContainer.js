@@ -3,11 +3,11 @@ import { Search } from "./Search";
 import classes from "../assets/css/AllJobsContainer.module.css";
 import { Job } from "./Job";
 import { useSelector, useDispatch } from "react-redux";
-import { Loading } from "./index";
+import { Loading, PageBtnContainer } from "./index";
 import { getAllJobs } from "../features/allJobs/allJobsSlice";
 
 export const AllJobsContainer = () => {
-  const { jobs, isLoading } = useSelector((store) => store.allJobs);
+  const { jobs, isLoading, numOfPages } = useSelector((store) => store.allJobs);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,16 +26,20 @@ export const AllJobsContainer = () => {
       {!isLoading && jobs.length > 0 && (
         <>
           <div className={classes["all_jobs_number"]}>
-            <h3>{jobs.length} jobs found</h3>
+            <h3>
+              {jobs.length} job{jobs.length > 1 && "s"} found
+            </h3>
           </div>
           <div className={classes["all_jobs_center"]}>
             {jobs.map((job, index) => (
               <Job key={index} {...job} />
             ))}
           </div>
+          <div className={classes["all_jobs_paging"]}>
+            {numOfPages > 0 && <PageBtnContainer />}
+          </div>
         </>
       )}
-      <div className={classes["all_jobs_paging"]}></div>
     </section>
   );
 };

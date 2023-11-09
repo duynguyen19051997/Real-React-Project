@@ -16,7 +16,8 @@ const initialAllJobs = {
   isLoading: false,
   jobs: [],
   totalJobs: 0,
-  numberOfPages: 1,
+  numOfPages: 1,
+  page: 1,
   stats: {},
   monthlyApplications: [],
   ...initialFilters,
@@ -42,6 +43,7 @@ const allJobsSlice = createSlice({
   reducers: {
     changeFilterHandle: (state, { payload: { name, value } }) => {
       state[name] = value;
+      state.page = 1;
     },
     showLoading: (state) => {
       state.isLoading = true;
@@ -49,16 +51,23 @@ const allJobsSlice = createSlice({
     hideLoading: (state) => {
       state.isLoading = false;
     },
+    clearFilters: (state) => {
+      return { ...state, ...initialFilters };
+    },
+    changePage: (state, { payload }) => {
+      state.page = payload;
+    },
   },
   extraReducers: {
     [getAllJobs.pending]: (state) => {
       state.isLoading = true;
     },
     [getAllJobs.fulfilled]: (state, { payload }) => {
-      const { jobs, numberOfPages, totalJobs } = payload;
+      const { jobs, numOfPages, totalJobs } = payload;
+      console.log(payload);
       state.isLoading = false;
       state.jobs = jobs;
-      state.numberOfPages = numberOfPages;
+      state.numOfPages = numOfPages;
       state.totalJobs = totalJobs;
     },
     [getAllJobs.rejected]: (state, { payload }) => {
@@ -81,7 +90,12 @@ const allJobsSlice = createSlice({
   },
 });
 
-export const { changeFilterHandle, showLoading, hideLoading } =
-  allJobsSlice.actions;
+export const {
+  changeFilterHandle,
+  showLoading,
+  hideLoading,
+  clearFilters,
+  changePage,
+} = allJobsSlice.actions;
 
 export default allJobsSlice.reducer;

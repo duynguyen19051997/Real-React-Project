@@ -31,8 +31,7 @@
   margin: var(--size-rem-2) auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: var(--width-percent-2);
-  row-gap: var(--width-percent-4);
+  gap: var(--size-rem-1);
 }
 
 .all_jobs_paging {

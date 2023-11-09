@@ -2,7 +2,6 @@
 
 .stats_container {
   width: 100%;
-  padding: var(--size-rem-1) var(--size-rem-0-5);
   display: grid;
   grid-template-columns: var(--width-percent-32) var(--width-percent-32) var(
       --width-percent-32

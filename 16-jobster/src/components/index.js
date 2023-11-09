@@ -17,6 +17,7 @@ import { StatItem } from "./StatItem";
 import { ChartsContainer } from "./ChartsContainer";
 import { AreaChart } from "./AreaChart";
 import { BarChart } from "./BarChart";
+import { PageBtnContainer } from "./PageBtnContainer";
 
 export {
   Logo,
@@ -38,4 +39,5 @@ export {
   ChartsContainer,
   AreaChart,
   BarChart,
+  PageBtnContainer,
 };
