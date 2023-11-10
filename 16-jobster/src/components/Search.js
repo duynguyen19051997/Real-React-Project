@@ -44,14 +44,14 @@ export const Search = () => {
           onChangeHandle={changeHandle}
         />
         <FormRowSelect
-          name="status"
+          name="searchStatus"
           options={statusOptions}
           selectedValue={searchStatus}
           labelText="status"
           onChangeHandle={changeHandle}
         />
         <FormRowSelect
-          name="type"
+          name="searchType"
           options={jobTypeOptions}
           selectedValue={searchType}
           labelText="type"

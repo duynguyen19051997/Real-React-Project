@@ -64,7 +64,6 @@ const allJobsSlice = createSlice({
     },
     [getAllJobs.fulfilled]: (state, { payload }) => {
       const { jobs, numOfPages, totalJobs } = payload;
-      console.log(payload);
       state.isLoading = false;
       state.jobs = jobs;
       state.numOfPages = numOfPages;

@@ -22,7 +22,7 @@ export const loginUserThunk = async (url, user, thunkAPI) => {
 
 export const updateUserThunk = async (url, user, thunkAPI) => {
   try {
-    console.log(JSON.stringify(thunkAPI.getState()));
+    // console.log(JSON.stringify(thunkAPI.getState()));
     const resp = await customFetch.patch(url, user, authHeader(thunkAPI));
     return resp.data;
   } catch (error) {

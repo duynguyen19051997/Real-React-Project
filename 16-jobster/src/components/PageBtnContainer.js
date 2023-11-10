@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import classes from "../assets/css/PageBtnContainer.module.css";
 import { BsChevronDoubleRight, BsChevronDoubleLeft } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { changePage } from "../features/allJobs/allJobsSlice";
+import { changePage, getAllJobs } from "../features/allJobs/allJobsSlice";
 
 export const PageBtnContainer = () => {
   const { page, numOfPages } = useSelector((store) => store.allJobs);
@@ -15,6 +15,7 @@ export const PageBtnContainer = () => {
         key={i}
         onClick={(e) => {
           dispatch(changePage(i));
+          dispatch(getAllJobs());
         }}
         className={`btn ${classes["btn_page"]} ${
           page === i ? classes["page_active"] : null
@@ -31,6 +32,7 @@ export const PageBtnContainer = () => {
         return;
       }
       dispatch(changePage(page - 1));
+      dispatch(getAllJobs());
       return;
     }
     if (type === "NEXT") {
@@ -38,6 +40,7 @@ export const PageBtnContainer = () => {
         return;
       }
       dispatch(changePage(page + 1));
+      dispatch(getAllJobs());
       return;
     }
   };
