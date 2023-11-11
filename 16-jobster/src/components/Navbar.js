@@ -3,7 +3,7 @@ import classes from "../assets/css/Navbar.module.css";
 import { BsList } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { BiLogOutCircle } from "react-icons/bi";
-import { logoutUser } from "../features/user/userSlice";
+import { clearStore, logoutUser } from "../features/user/userSlice";
 import { useDispatch } from "react-redux";
 
 export const Navbar = ({ onShowSidebar }) => {
@@ -30,7 +30,7 @@ export const Navbar = ({ onShowSidebar }) => {
           <button
             className="btn"
             onClick={() => {
-              dispatch(logoutUser("Logging out..."));
+              dispatch(clearStore("Logging out..."));
               setIsShowLogout(!isShowLogout);
             }}
           >
