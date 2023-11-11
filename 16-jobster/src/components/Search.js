@@ -30,6 +30,7 @@ export const Search = () => {
 
   const clearHandle = (e) => {
     dispatch(clearFilters());
+    dispatch(getAllJobs());
   };
 
   return (

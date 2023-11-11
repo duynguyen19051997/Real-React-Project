@@ -53,7 +53,7 @@ const allJobsSlice = createSlice({
       state.isLoading = false;
     },
     clearFilters: (state) => {
-      return { ...state, ...initialFilters };
+      return { ...initialAllJobs };
     },
     changePage: (state, { payload }) => {
       state.page = payload;
