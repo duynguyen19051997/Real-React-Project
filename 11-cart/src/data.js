@@ -1,7 +1,7 @@
 export const cartData = [
   {
     id: 1,
-    name: "iphone 14",
+    title: "iphone 14",
     img: "https://cdn.tgdd.vn/Products/Images/42/289663/iPhone-14-plus-thumb-den-600x600.jpg",
     price: 699,
     amount: 1,
@@ -15,7 +15,7 @@ export const cartData = [
   },
   {
     id: 3,
-    name: "iphone 14 pro",
+    title: "iphone 14 pro",
     img: "https://cdn.tgdd.vn/Products/Images/42/289691/iphone-14-pro-vang-thumb-600x600.jpg",
     price: 1199,
     amount: 1,

@@ -3,15 +3,13 @@ import { cartData } from "../data";
 import {
   CLEAR_ALL_ITEMS,
   DECREASE_ITEM,
-  GET_ALL_ITEMS,
   GET_TOTAL_ITEMS,
   INCREASE_ITEM,
-  LOADING_ITEM,
   REMOVE_ITEM,
 } from "./action";
 import { reducer } from "./reducer";
 
-const url = "https://course-api.com/react-useReducer-cart-project";
+//const url = "https://course-api.com/react-useReducer-cart-project";
 const CartContext = React.createContext();
 
 const initialCart = {
