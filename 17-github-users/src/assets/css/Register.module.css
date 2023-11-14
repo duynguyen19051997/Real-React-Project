@@ -1,0 +1,21 @@
+@import "./global.css";
+
+.register_container {
+  width: 90vw;
+  margin: var(--size-rem-5) auto;
+  max-width: 600px;
+  text-align: center;
+}
+
+.register_container img {
+  display: block;
+  width: 100%;
+}
+
+.btn_register {
+  margin-top: var(--size-rem-2);
+  text-transform: uppercase;
+  background-color: var(--color-primary-8);
+  color: var(--color-primary-1);
+  font-weight: var(--font-weight-500);
+}

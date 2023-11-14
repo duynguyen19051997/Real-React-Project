@@ -1,0 +1,92 @@
+:root {
+  /* WIDTH */
+  --width-percent-95: 95%;
+  --width-percent-80: 80%;
+  --width-percent-70: 70%;
+  --width-percent-60: 60%;
+  --width-percent-50: 50%;
+  --width-percent-48: 48%;
+  --width-percent-40: 40%;
+  --width-percent-32: 32%;
+  --width-percent-30: 30%;
+  --width-percent-20: 20%;
+  --width-percent-15: 15%;
+  --width-percent-10: 10%;
+  --width-percent-5: 5%;
+  --width-percent-4: 4%;
+  --width-percent-2: 2%;
+  --width-percent-1: 1%;
+
+  /* BACK-GROUND COLORS */
+  --background-color-main: #f0f4f8;
+  --background-color-input: #f0f4f8;
+
+  /* COLOR */
+  --color-primary-1: #044c53;
+  --color-primary-2: #0a6c75;
+  --color-primary-3: #0e7c86;
+  --color-primary-4: #148e99;
+  --color-primary-5: #2caeba;
+  --color-primary-6: #37bcc8;
+  --color-primary-7: #52d1da;
+  --color-primary-8: #88ebf2;
+  --color-primary-9: #bff8fd;
+  --color-primary-10: #e0fcff;
+  --color-grey-1: #102a42;
+  --color-grey-2: #243a52;
+  --color-grey-3: #324d67;
+  --color-grey-4: #48647f;
+  --color-grey-5: #617d98;
+  --color-grey-6: #829ab0;
+  --color-grey-7: #9eb2c7;
+  --color-grey-8: #bcccdc;
+  --color-grey-9: #dae2ec;
+  --color-grey-10: #f1f5f8;
+  --color-white: #fff;
+  --color-red-dark: #bb2525;
+  --color-red-light: #e66b6b;
+  --color-green-dark: #25bb32;
+  --color-green-light: #6be675;
+  --color-black: #222;
+
+  /* LETTER SPACING */
+  --letter-spacing-18: 1.8px;
+  --letter-spacing-15: 1.5px;
+
+  /* MARGIN PADDING SIZE */
+  --size-rem-0-2-5: 0.25rem;
+  --size-rem-0-5: 0.5rem;
+  --size-rem-0-7-5: 0.75rem;
+  --size-rem-1: 1rem;
+  --size-rem-2: 2rem;
+  --size-rem-3: 3rem;
+  --size-rem-5: 5rem;
+  --size-rem-7: 7rem;
+
+  /* LINE HEIGH */
+  --line-height-175: 1.75;
+
+  /* FONT WEIGHT */
+  --font-weight-700: 700;
+  --font-weight-600: 600;
+  --font-weight-500: 500;
+  --font-weight-400: 400;
+
+  /* FONT SIZE */
+  --font-size-small: 0.875rem;
+
+  /* SHADOW */
+  --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(31, 26, 26, 0.04);
+
+  /* WIDTH, HEIGH OF CHART */
+  --chart-width-heigh-1000: 1000px;
+  --chart-width-heigh-600: 600px;
+  --chart-width-heigh-500: 500px;
+  --chart-width-heigh-300: 300px;
+}
