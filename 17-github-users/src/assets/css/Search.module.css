@@ -1,0 +1,46 @@
+@import "./global.css";
+
+.search_container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  column-gap: 5%;
+  align-items: center;
+}
+
+.form {
+  width: 100%;
+  background-color: var(--color-white);
+}
+
+.form_control {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  column-gap: 0.5rem;
+  align-items: center;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+.icon_search {
+  font-size: 1rem;
+}
+
+.input_search {
+  background: var(--color-white);
+  letter-spacing: var(--letter-spacing-15);
+}
+
+.btn_search {
+  background: var(--color-primary-8);
+  color: var(--color-primary-1);
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-medium);
+}
+
+.search_container h3 {
+  letter-spacing: var(--letter-spacing-18);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-600);
+  color: var(--color-grey-3);
+}

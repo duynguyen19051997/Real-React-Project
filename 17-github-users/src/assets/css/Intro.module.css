@@ -1,0 +1,46 @@
+@import "./global.css";
+
+.intro_container {
+  width: 100%;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 2rem;
+}
+
+.intro_item {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 2rem;
+  padding: 1.5rem 2rem;
+  align-items: center;
+  background-color: var(--color-white);
+}
+
+.intro_item_icon {
+  width: 4rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  background-color: antiquewhite;
+  justify-content: center;
+}
+
+.intro_content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.intro_content h3 {
+  letter-spacing: var(--letter-spacing-18);
+  font-size: var(--font-size-large);
+}
+.intro_content p {
+  letter-spacing: var(--letter-spacing-15);
+  color: var(--color-grey-5);
+  text-transform: capitalize;
+}

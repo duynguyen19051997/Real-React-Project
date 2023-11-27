@@ -74,6 +74,8 @@
 
   /* FONT SIZE */
   --font-size-small: 0.875rem;
+  --font-size-medium: 1.25rem;
+  --font-size-large: 1.75rem;
 
   /* SHADOW */
   --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
