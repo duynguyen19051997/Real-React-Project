@@ -18,9 +18,7 @@ export const Dashboard = () => {
       <Navbar />
       <section className={classes["dashboard_center"]}>
         <Search />
-        <section className={classes["intro_container"]}>
-          <Intro />
-        </section>
+        <Intro />
         <section className={classes["info_container"]}>
           <User />
           <Followers />

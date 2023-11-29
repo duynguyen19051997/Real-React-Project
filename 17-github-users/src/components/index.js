@@ -11,6 +11,7 @@ import { IntroRepos } from "./IntroRepos";
 import { IntroFollowers } from "./IntroFollowers";
 import { IntroFollowing } from "./IntroFollowing";
 import { IntroGists } from "./IntroGists";
+import { FollowerItem } from "./FollowerItem";
 
 export {
   Followers,
@@ -26,4 +27,5 @@ export {
   IntroFollowers,
   IntroFollowing,
   IntroGists,
+  FollowerItem,
 };

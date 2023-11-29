@@ -1,0 +1,21 @@
+@import "./global.css";
+
+.followers_container {
+  width: 100%;
+  height: 310px;
+  overflow: auto;
+  background-color: var(--color-white);
+}
+
+.followers_container h2 {
+  margin-top: 0.5rem;
+  color: var(--color-grey-3);
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: var(--letter-spacing-15);
+}
+
+.followers_center {
+  width: 90%;
+  margin: 0.5rem auto;
+}

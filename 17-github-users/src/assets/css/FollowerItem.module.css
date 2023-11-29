@@ -1,0 +1,30 @@
+@import "./global.css";
+
+.followers_item {
+  width: 100%;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1rem;
+  align-items: center;
+}
+
+.followers_item img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.follower_item_info {
+  letter-spacing: var(--letter-spacing-15);
+}
+
+.follower_item_info h4 {
+  color: var(--color-grey-1);
+  margin-bottom: 0.25rem;
+}
+
+.follower_item_info a {
+  color: var(--color-grey-1);
+  text-decoration: none;
+}
