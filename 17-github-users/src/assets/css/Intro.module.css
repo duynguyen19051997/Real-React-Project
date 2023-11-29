@@ -25,7 +25,6 @@
   display: flex;
   align-items: center;
   border-radius: 50%;
-  background-color: antiquewhite;
   justify-content: center;
 }
 
@@ -43,4 +42,24 @@
   letter-spacing: var(--letter-spacing-15);
   color: var(--color-grey-5);
   text-transform: capitalize;
+}
+
+.intro_repos {
+  background: rgb(255, 224, 240);
+  color: rgb(218, 74, 145);
+}
+
+.intro_followers {
+  background: var(--color-primary-10);
+  color: var(--color-primary-5);
+}
+
+.intro_following {
+  background: rgb(230, 230, 255);
+  color: rgb(93, 85, 250);
+}
+
+.intro_gists {
+  background: rgb(255, 251, 234);
+  color: rgb(240, 180, 41);
 }

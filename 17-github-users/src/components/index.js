@@ -7,6 +7,10 @@ import { StarsPerLanguage } from "./StarsPerLanguage";
 import { User } from "./User";
 import { Search } from "./Search";
 import { Intro } from "./Intro";
+import { IntroRepos } from "./IntroRepos";
+import { IntroFollowers } from "./IntroFollowers";
+import { IntroFollowing } from "./IntroFollowing";
+import { IntroGists } from "./IntroGists";
 
 export {
   Followers,
@@ -18,4 +22,8 @@ export {
   User,
   Search,
   Intro,
+  IntroRepos,
+  IntroFollowers,
+  IntroFollowing,
+  IntroGists,
 };
