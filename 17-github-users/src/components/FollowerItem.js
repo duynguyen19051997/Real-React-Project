@@ -2,14 +2,14 @@ import React from "react";
 
 import classes from "../assets/css/FollowerItem.module.css";
 
-export const FollowerItem = () => {
+export const FollowerItem = ({ avatarUrl, login, htmlUrl }) => {
   return (
     <div className={classes["followers_item"]}>
-      <img src="https://avatars.githubusercontent.com/u/3006?v=4" alt="" />
+      <img src={avatarUrl} alt="" />
       <div className={classes["follower_item_info"]}>
-        <h4>tarasis</h4>
-        <a href="https://github.com/tarasis" alt="">
-          https://github.com/tarasis
+        <h4>{login}</h4>
+        <a href={htmlUrl} target="_blank" rel="noreferrer" alt="">
+          {htmlUrl}
         </a>
       </div>
     </div>

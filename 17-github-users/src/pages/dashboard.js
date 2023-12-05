@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "../assets/css/Dashboard.module.css";
 import {
   Followers,
@@ -11,8 +11,19 @@ import {
   StarsPerLanguage,
   User,
 } from "../components";
+import { useGithubContext } from "../contexts/githubContext";
+import { useNavigate } from "react-router-dom";
 
 export const Dashboard = () => {
+  const { myUser } = useGithubContext();
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   if (!myUser) {
+  //     navigate("/register");
+  //   }
+  // }, [myUser, navigate]);
+
   return (
     <main className={classes["dashboard_container"]}>
       <Navbar />

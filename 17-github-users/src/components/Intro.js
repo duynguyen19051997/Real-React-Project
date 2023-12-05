@@ -7,14 +7,15 @@ import {
   IntroFollowing,
   IntroGists,
 } from "./index";
+import { user } from "../contexts/data/user";
 
 export const Intro = () => {
   return (
     <section className={classes["intro_container"]}>
-      <IntroRepos />
-      <IntroFollowers />
-      <IntroFollowing />
-      <IntroGists />
+      <IntroRepos numOfRepos={user.public_repos} />
+      <IntroFollowers numOfFollowers={user.followers} />
+      <IntroFollowing numOfFollowing={user.following} />
+      <IntroGists numOfGists={user.public_gists} />
     </section>
   );
 };

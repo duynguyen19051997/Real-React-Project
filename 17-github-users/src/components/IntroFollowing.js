@@ -3,7 +3,7 @@ import React from "react";
 import { IoPersonAddOutline } from "react-icons/io5";
 import classes from "../assets/css/Intro.module.css";
 
-export const IntroFollowing = () => {
+export const IntroFollowing = ({ numOfFollowing }) => {
   return (
     <article className={classes["intro_item"]}>
       <div
@@ -12,7 +12,7 @@ export const IntroFollowing = () => {
         <IoPersonAddOutline />
       </div>
       <div className={classes["intro_content"]}>
-        <h3>253</h3>
+        <h3>{numOfFollowing}</h3>
         <p>following</p>
       </div>
     </article>

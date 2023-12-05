@@ -3,7 +3,7 @@ import React from "react";
 import { BsJournalBookmarkFill } from "react-icons/bs";
 import classes from "../assets/css/Intro.module.css";
 
-export const IntroRepos = () => {
+export const IntroRepos = ({ numOfRepos }) => {
   return (
     <article className={classes["intro_item"]}>
       <div
@@ -12,7 +12,7 @@ export const IntroRepos = () => {
         <BsJournalBookmarkFill />
       </div>
       <div className={classes["intro_content"]}>
-        <h3>253</h3>
+        <h3>{numOfRepos}</h3>
         <p>repos</p>
       </div>
     </article>

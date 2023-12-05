@@ -1,24 +1,30 @@
 @import "./global.css";
 
-.register_container {
+.error_container {
   width: 90vw;
   margin: var(--size-rem-5) auto;
   max-width: 600px;
   text-align: center;
+  letter-spacing: var(--letter-spacing-15);
 }
 
-.register_container img {
+.error_container img {
   display: block;
   width: 100%;
 }
 
-.register_container h1 {
-  margin-top: var(--size-rem-1);
+.error_container h1 {
+  margin-top: var(--size-rem-0-5);
   font-weight: var(--font-weight-600);
   color: var(--color-grey-3);
 }
 
-.btn_register {
+.error_container p {
+  margin-top: var(--size-rem-0-5);
+  color: var(--color-grey-1);
+}
+
+.btn_back {
   margin-top: var(--size-rem-1);
   text-transform: uppercase;
   background-color: var(--color-primary-8);

@@ -3,38 +3,42 @@ import { AiOutlineBlock } from "react-icons/ai";
 import { GiPositionMarker } from "react-icons/gi";
 import { CiLink } from "react-icons/ci";
 import classes from "../assets/css/Users.module.css";
+import { useGithubContext } from "../contexts/githubContext";
+import { Link } from "react-router-dom";
 
 export const User = () => {
+  const { avatar_url, login, html_url, name, company, bio, location, blog } =
+    useGithubContext().githubUser;
+
   return (
     <article className={classes["users_container"]}>
       <h2>User</h2>
       <div className={classes["user_header"]}>
         <div className={classes["user_info"]}>
-          <img
-            src="https://avatars.githubusercontent.com/u/42133389?v=4"
-            alt=""
-          />
+          <img src={avatar_url} alt="" />
           <div className={classes["user_name"]}>
-            <h3>John Smilga</h3>
-            <p>@john_smilga</p>
+            <h3>{name}</h3>
+            <p>@{login}</p>
           </div>
         </div>
-        <button className={`btn ${classes["btn_follow"]}`}>Follow</button>
+        <Link to={html_url} className={`btn ${classes["btn_follow"]}`}>
+          Follow
+        </Link>
       </div>
       <div className={classes["user_detail"]}>
-        <h4>Creator of Coding Addict</h4>
+        <h4>{bio}</h4>
         <div className={classes["detail"]}>
           <AiOutlineBlock className={classes["user_icon"]} />
-          <p>Coding Addict</p>
+          <p>{company}</p>
         </div>
         <div className={classes["detail"]}>
           <GiPositionMarker className={classes["user_icon"]} />
-          <p>Sarasota, FL</p>
+          <p>{location}</p>
         </div>
         <div className={classes["detail"]}>
           <CiLink className={classes["user_icon"]} />
-          <a href="www.johnsmilga.com" alt="">
-            www.johnsmilga.com
+          <a href={blog} alt="">
+            {blog}
           </a>
         </div>
       </div>

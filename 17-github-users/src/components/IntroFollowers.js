@@ -3,7 +3,7 @@ import React from "react";
 import { GoPeople } from "react-icons/go";
 import classes from "../assets/css/Intro.module.css";
 
-export const IntroFollowers = () => {
+export const IntroFollowers = ({ numOfFollowers }) => {
   return (
     <article className={classes["intro_item"]}>
       <div
@@ -12,7 +12,7 @@ export const IntroFollowers = () => {
         <GoPeople />
       </div>
       <div className={classes["intro_content"]}>
-        <h3>253</h3>
+        <h3>{numOfFollowers}</h3>
         <p>followers</p>
       </div>
     </article>
