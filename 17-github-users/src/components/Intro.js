@@ -7,15 +7,16 @@ import {
   IntroFollowing,
   IntroGists,
 } from "./index";
-import { user } from "../contexts/data/user";
+import { useGithubContext } from "../contexts/githubContext";
 
 export const Intro = () => {
+  const { githubUser } = useGithubContext();
   return (
     <section className={classes["intro_container"]}>
-      <IntroRepos numOfRepos={user.public_repos} />
-      <IntroFollowers numOfFollowers={user.followers} />
-      <IntroFollowing numOfFollowing={user.following} />
-      <IntroGists numOfGists={user.public_gists} />
+      <IntroRepos numOfRepos={githubUser.public_repos} />
+      <IntroFollowers numOfFollowers={githubUser.followers} />
+      <IntroFollowing numOfFollowing={githubUser.following} />
+      <IntroGists numOfGists={githubUser.public_gists} />
     </section>
   );
 };

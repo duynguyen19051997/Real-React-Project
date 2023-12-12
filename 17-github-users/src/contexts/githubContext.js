@@ -11,6 +11,7 @@ export const GithubProvider = ({ children }) => {
   const [myUser, setMyUser] = useState(null);
   const [githubUser] = useState(defaultUser);
   const [githubFollowers] = useState(followers);
+  const [githubRepos] = useState(repos);
 
   useEffect(() => {
     setMyUser(user);
@@ -21,7 +22,7 @@ export const GithubProvider = ({ children }) => {
       value={{
         githubFollowers,
         githubUser,
-        repos,
+        githubRepos,
         myUser,
         loginWithRedirect,
         logout,
