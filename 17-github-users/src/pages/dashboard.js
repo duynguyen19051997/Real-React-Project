@@ -24,6 +24,25 @@ export const Dashboard = () => {
   //   }
   // }, [myUser, navigate]);
 
+  const { githubRepos } = useGithubContext();
+
+  let languagesData = githubRepos.reduce((total, { language }) => {
+    if (!language) return total;
+    if (!total[language]) {
+      total[language] = { label: language, value: 1 };
+    } else {
+      total[language] = {
+        ...total[language],
+        value: total[language].value + 1,
+      };
+    }
+    return total;
+  }, {});
+
+  languagesData = Object.values(languagesData).sort((a, b) => {
+    return a.value - b.value;
+  });
+
   return (
     <main className={classes["dashboard_container"]}>
       <Navbar />
@@ -35,9 +54,9 @@ export const Dashboard = () => {
           <Followers />
         </section>
         <section className={classes["chart_container"]}>
-          <Languages />
+          <Languages data={languagesData} />
           <MostPopular />
-          <StarsPerLanguage />
+          <StarsPerLanguage data={languagesData} />
           <MostForked />
         </section>
       </section>
