@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { BsSearch } from "react-icons/bs";
 import classes from "../assets/css/Search.module.css";
+import { useGithubContext } from "../contexts/githubContext";
 
 export const Search = () => {
+  const [enteredUser, setEnteredUser] = useState("");
+  const { requests } = useGithubContext();
+
   const submitHandle = (event) => {
     event.preventDefault();
+
+    if (enteredUser) {
+      setEnteredUser("");
+    }
   };
 
   return (
@@ -17,13 +25,17 @@ export const Search = () => {
             type="text"
             placeholder="Enter github user"
             className={`input ${classes["input_search"]}`}
+            value={enteredUser}
+            onChange={(e) => setEnteredUser(e.target.value)}
           />
-          <button type="submit" className={`btn ${classes["btn_search"]}`}>
-            Search
-          </button>
+          {requests > 0 && (
+            <button type="submit" className={`btn ${classes["btn_search"]}`}>
+              Search
+            </button>
+          )}
         </div>
       </form>
-      <h3>Requests: 55/60</h3>
+      <h3>Requests: {requests}/60</h3>
     </div>
   );
 };

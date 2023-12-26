@@ -10,6 +10,7 @@ import {
   Search,
   StarsPerLanguage,
   User,
+  Loading,
 } from "../components";
 import { useGithubContext } from "../contexts/githubContext";
 import { useNavigate } from "react-router-dom";
@@ -24,41 +25,69 @@ export const Dashboard = () => {
   //   }
   // }, [myUser, navigate]);
 
-  const { githubRepos } = useGithubContext();
+  const { githubRepos, isLoading } = useGithubContext();
 
-  let languagesData = githubRepos.reduce((total, { language }) => {
-    if (!language) return total;
-    if (!total[language]) {
-      total[language] = { label: language, value: 1 };
-    } else {
-      total[language] = {
-        ...total[language],
-        value: total[language].value + 1,
-      };
-    }
-    return total;
-  }, {});
+  const languages = githubRepos.reduce(
+    (total, { language, stargazers_count }) => {
+      if (!language) return total;
+      if (!total[language]) {
+        total[language] = {
+          label: language,
+          value: 1,
+          stars: stargazers_count,
+        };
+      } else {
+        total[language] = {
+          ...total[language],
+          value: total[language].value + 1,
+          stars: total[language].stars + stargazers_count,
+        };
+      }
+      return total;
+    },
+    {}
+  );
 
-  languagesData = Object.values(languagesData).sort((a, b) => {
+  const languagesData = Object.values(languages).sort((a, b) => {
     return a.value - b.value;
   });
+
+  const { stars, forks } = githubRepos.reduce(
+    (total, { stargazers_count, name, forks }) => {
+      total.stars[stargazers_count] = { label: name, value: stargazers_count };
+      total.forks[forks] = { label: name, value: forks };
+      return total;
+    },
+    {
+      stars: {},
+      forks: {},
+    }
+  );
+
+  const mostPopularData = Object.values(stars).slice(-5).reverse();
+  const mostForkedData = Object.values(forks).slice(-5).reverse();
 
   return (
     <main className={classes["dashboard_container"]}>
       <Navbar />
       <section className={classes["dashboard_center"]}>
         <Search />
-        <Intro />
-        <section className={classes["info_container"]}>
-          <User />
-          <Followers />
-        </section>
-        <section className={classes["chart_container"]}>
-          <Languages data={languagesData} />
-          <MostPopular />
-          <StarsPerLanguage data={languagesData} />
-          <MostForked />
-        </section>
+        {isLoading && <Loading />}
+        {!isLoading && (
+          <>
+            <Intro />
+            <section className={classes["info_container"]}>
+              <User />
+              <Followers />
+            </section>
+            <section className={classes["chart_container"]}>
+              <Languages data={languagesData} />
+              <MostPopular data={mostPopularData} />
+              <StarsPerLanguage data={languagesData} />
+              <MostForked data={mostForkedData} />
+            </section>
+          </>
+        )}
       </section>
     </main>
   );

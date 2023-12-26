@@ -12,6 +12,7 @@ import { IntroFollowers } from "./IntroFollowers";
 import { IntroFollowing } from "./IntroFollowing";
 import { IntroGists } from "./IntroGists";
 import { FollowerItem } from "./FollowerItem";
+import { Loading } from "./Loading";
 
 export {
   Followers,
@@ -28,4 +29,5 @@ export {
   IntroFollowing,
   IntroGists,
   FollowerItem,
+  Loading,
 };
