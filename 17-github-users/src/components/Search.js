@@ -6,7 +6,7 @@ import { useGithubContext } from "../contexts/githubContext";
 
 export const Search = () => {
   const [enteredUser, setEnteredUser] = useState("");
-  const { requests } = useGithubContext();
+  const { requests, rateError } = useGithubContext();
 
   const submitHandle = (event) => {
     event.preventDefault();
@@ -18,6 +18,9 @@ export const Search = () => {
 
   return (
     <div className={classes["search_container"]}>
+      {/* TODO: Error component */}
+      {rateError.show && <p>{rateError.message}</p>}
+
       <form onSubmit={submitHandle} className={classes["form"]}>
         <div className={classes["form_control"]}>
           <BsSearch className={classes["icon_search"]} />
