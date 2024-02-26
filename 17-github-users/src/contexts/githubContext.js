@@ -11,12 +11,27 @@ const rootUrl = "https://api.github.com";
 export const GithubProvider = ({ children }) => {
   const { user, loginWithRedirect, logout } = useAuth0();
   const [myUser, setMyUser] = useState(null);
-  const [githubUser] = useState(defaultUser);
+  const [githubUser, setGithubUser] = useState(defaultUser);
   const [githubFollowers] = useState(followers);
   const [githubRepos] = useState(repos);
   const [requests, setRequests] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [rateError, setRateError] = useState({ show: false, message: "" });
+
+  const searchGithubUser = async (userName) => {
+    setIsLoading(true);
+    await axios(`${rootUrl}/users/${userName}`)
+      .then(({ data }) => {
+        setGithubUser(data);
+        toggleError(false, "");
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        toggleError(true, "there is no user with that username");
+        setIsLoading(false);
+      });
+  };
 
   const checkRequests = () => {
     axios(`${rootUrl}/rate_limit`)
@@ -54,6 +69,7 @@ export const GithubProvider = ({ children }) => {
         isLoading,
         loginWithRedirect,
         logout,
+        searchGithubUser,
         rateError,
       }}
     >
