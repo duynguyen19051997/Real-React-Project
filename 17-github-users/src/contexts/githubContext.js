@@ -60,8 +60,6 @@ export const GithubProvider = ({ children }) => {
           .catch((err) => {
             console.log(err);
           });
-
-        toggleError(false, "");
       } else {
         toggleError(true, "there is no user with that username");
       }
